@@ -56,7 +56,7 @@ def chat_with_codellama(prompt):
 
 if __name__ == "__main__":
 
-    prompt = "give me an example log file showing a ddos attack"
+    prompt = "Give me an example dns log file. It should contain atleast 10 lines of data."
 
     print("getting mistral response\n")
     
