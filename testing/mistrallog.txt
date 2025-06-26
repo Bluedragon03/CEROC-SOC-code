@@ -1,0 +1,17 @@
+ Here's an example of a simulated log file that shows signs of a DDoS (Distributed Denial of Service) attack. Please note that this is a simplified representation and actual logs can vary significantly based on the specific systems, protocols, and attack characteristics.
+
+```
+12/01/2021 15:30:00 [INFO] - Normal user traffic: Request from 192.168.1.10 for resource A
+12/01/2021 15:31:00 [INFO] - Normal user traffic: Request from 192.168.1.11 for resource B
+12/01/2021 15:32:00 [WARNING] - Increased requests from 192.168.1.10 for resource A (above normal usage)
+12/01/2021 15:33:00 [ERROR] - High number of requests from 192.168.1.10 for resource A (considered a DDoS attack attempt)
+12/01/2021 15:34:00 [INFO] - Normal user traffic: Request from 192.168.1.20 for resource C
+12/01/2021 15:35:00 [ERROR] - Unusually high number of requests from various IPs (192.168.1.2, 192.168.1.3, ...) for resource A (DDoS attack detected)
+12/01/2021 15:36:00 [ERROR] - Service unavailable due to DDoS attack on resource A
+12/01/2021 15:40:00 [INFO] - DDoS mitigation system activated
+12/01/2021 15:41:00 [WARNING] - Some requests are being dropped due to DDoS mitigation (normal user traffic may be affected)
+12/01/2021 15:42:00 [INFO] - Service partially recovered, some requests allowed through (DDoS attack in progress but partially controlled)
+...
+```
+
+In this log, you can see that the number of requests to a specific resource (resource A) from various IP addresses suddenly increases significantly, which indicates an attempted DDoS attack. The log also shows that the service handling this resource becomes unavailable due to the high traffic and that a DDoS mitigation system is activated to manage the situation. This example demonstrates how a log file can help identify a DDoS attack.

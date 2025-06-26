@@ -1,0 +1,17 @@
+
+Here is an example of a log file from a DDoS attack:
+```
+[12:00:00.000] - Received TCP SYN packet from 192.168.1.1 with ID 12345
+[12:00:00.010] - Ignored TCP SYN packet from 192.168.1.1 with ID 12345, already received a SYN for this connection
+[12:00:00.020] - Received TCP ACK packet from 192.168.1.1 with ID 12345
+[12:00:00.030] - Ignored TCP ACK packet from 192.168.1.1 with ID 12345, already received an ACK for this connection
+[12:00:00.040] - Received UDP packet from 192.168.1.1 with ID 12345
+[12:00:00.050] - Ignored UDP packet from 192.168.1.1 with ID 12345, already received a packet for this connection
+[12:00:00.060] - Received TCP SYN packet from 192.168.1.1 with ID 12345
+[12:00:00.070] - Ignored TCP SYN packet from 192.168.1.1 with ID 12345, already received a SYN for this connection
+[12:00:00.080] - Received TCP ACK packet from 192.168.1.1 with ID 12345
+[12:00:00.090] - Ignored TCP ACK packet from 192.168.1.1 with ID 12345, already received an ACK for this connection
+[12:00:00.100] - Received UDP packet from 192.168.1.1 with ID 12345
+[12:00:00.110] - Ignored UDP packet from 192.168.1.1 with ID 12345, already received a packet for this connection
+```
+In this log file, we can see that the attacker is sending SYN and ACK packets to try and establish a connection with the victim's server. However, the victim's server is ignoring these packets because they have already received them before. This is an example of a "SYN flood" attack, where the attacker sends a large number of SYN packets in rapid succession in order to consume all available resources on the victim's server and make it unavailable to legitimate users.
