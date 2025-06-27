@@ -26,7 +26,7 @@ def chat_with_mistral(prompt):
 
 if __name__ == "__main__":
 
-    prompt = "generate a dns log that contains signs of a ddos attack. the log should contain atleast 50 lines of data. do not respond with anything except for the data in the log."
+    prompt = "Generate exactly 50 lines of realistic DNS log entries. Each line should resemble output from a DNS server log, including a timestamp, client IP address, query type, domain name, and response code. Do not include any explanation, headers, or comments—only the 50 lines of raw log data."
 
     print("getting response from mistral")
     

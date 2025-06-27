@@ -1,138 +1,131 @@
- ```
+ 2021-03-01T12:34:56Z 192.168.1.10 - Query: AAAA example.com - Response: NoError, NoData
 
-192.168.1.1 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.1 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.1 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.2 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.2 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.2 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.3 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.3 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.3 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.4 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.4 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.4 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.5 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.5 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.5 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.6 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.6 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.6 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.7 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.7 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.7 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.8 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.8 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.8 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.9 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.9 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.9 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.10 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.10 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.10 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.11 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.11 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.11 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.12 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.12 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.12 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.13 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.13 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.13 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.14 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.14 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.14 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.15 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.15 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.15 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.16 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.16 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.16 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.17 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.17 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.17 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.18 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.18 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.18 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.19 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.19 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.19 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.20 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.20 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.20 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.21 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.21 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.21 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.22 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.22 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.22 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.23 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.23 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.23 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.24 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.24 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.24 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.25 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.25 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.25 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.26 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.26 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.26 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.27 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.27 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.27 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.28 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.28 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.28 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.29 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.29 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.29 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.30 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.30 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.30 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.31 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.31 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.31 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.32 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.32 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.32 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.33 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.33 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.33 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.34 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.34 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.34 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.35 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.35 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.35 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.36 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.36 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.36 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.37 - - [31/Jan/2023:14:30:17 +0000] "GET / HTTP/1.1" 200 253 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.37 - - [31/Jan/2023:14:30:17 +0000] "GET /style.css HTTP/1.1" 200 53 "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
-192.168.1.37 - - [31/Jan/2023:14:30:17 +0000] "GET /scripts/main.js HTTP/1.1" 200 1.3k "-" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64)"
+2021-03-01T12:34:57Z 10.0.0.2 - Query: MX mail.example.org - Response: NoError, Rcode: 0
 
-These are the logs of a web server, the user agent is Internet Explorer 9 on Windows NT 6.1. Generate a Python script that processes these logs and determines the number of unique IP addresses that accessed the site during this time frame.
+2021-03-01T12:34:58Z 192.168.2.15 - Query: TXT subdomain.example.com - Response: NoError, Rcode: 0
 
-Here's one possible solution:
+2021-03-01T12:34:59Z 172.16.0.1 - Query: NS example.net - Response: NoError, Rcode: 0
 
-```python
-import re
-from collections import defaultdict
+2021-03-01T12:35:00Z 192.168.3.4 - Query: A www.example.org - Response: NoError, Rcode: 0
 
-# Regular expression pattern for matching IP addresses in log entries
-ip_pattern = re.compile(r'\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9])\b')
+2021-03-01T12:35:01Z 10.0.1.2 - Query: CNAME alias.example.com - Response: NoError, Rcode: 0
 
-# Process log entries and store unique IP addresses in a dictionary
-ip_counts = defaultdict(int)
-for line in lines:
-    match = ip_pattern.search(line)
-    if match:
-        ip_counts[match.group(0)] += 1
+2021-03-01T12:35:02Z 192.168.4.2 - Query: AAAA *.example.net - Response: NoError, NoData
 
-# Determine the number of unique IP addresses that accessed the site during this time frame
-num_ips = len(ip_counts)
-print("Number of unique IP addresses:", num_ips)
-```
+2021-03-01T12:35:03Z 172.16.0.15 - Query: MX backup-mail.example.org - Response: NoError, Rcode: 0
 
-You'll need to replace `lines` with your actual list of log entries. This script uses a regular expression to match IP addresses in each line, and then it counts the number of unique IP addresses by iterating through the lines. The regular expression pattern used here matches IPv4 addresses using octets separated by dots (e.g., 192.168.1.1).
+2021-03-01T12:35:04Z 192.168.5.3 - Query: TXT example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:05Z 10.0.2.4 - Query: CNAME sub.example.net - Response: NoError, Rcode: 3
+
+2021-03-01T12:35:06Z 192.168.6.1 - Query: NS example.org - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:07Z 172.16.0.2 - Query: AAAA *.example.co.uk - Response: NoError, NoData
+
+2021-03-01T12:35:08Z 192.168.7.4 - Query: MX mail.example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:09Z 10.0.3.3 - Query: TXT www.example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:10Z 192.168.8.5 - Query: CNAME backup.example.org - Response: NoError, Rcode: 3
+
+2021-03-01T12:35:11Z 172.16.0.3 - Query: A www.example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:12Z 192.168.9.1 - Query: NS backup-example.net - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:13Z 10.0.4.2 - Query: AAAA mail.example.co.uk - Response: NoError, NoData
+
+2021-03-01T12:35:14Z 192.168.10.7 - Query: MX example.org - Response: NoError, Rcode: 3
+
+2021-03-01T12:35:15Z 172.16.0.4 - Query: TXT subdomain.example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:16Z 192.168.11.3 - Query: CNAME backup-mail.example.co.uk - Response: NoError, Rcode: 3
+
+2021-03-01T12:35:17Z 10.0.5.4 - Query: A www.example.org - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:18Z 192.168.12.10 - Query: NS example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:19Z 172.16.0.5 - Query: AAAA mail.example.co.uk - Response: NoError, NoData
+
+2021-03-01T12:35:20Z 192.168.13.2 - Query: MX example.org - Response: NoError, Rcode: 3
+
+2021-03-01T12:35:21Z 10.0.6.6 - Query: TXT subdomain.example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:22Z 192.168.14.7 - Query: CNAME backup-mail.example.co.uk - Response: NoError, Rcode: 3
+
+2021-03-01T12:35:23Z 10.0.7.2 - Query: A www.example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:24Z 192.168.15.4 - Query: NS example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:25Z 172.16.0.6 - Query: AAAA mail.example.co.uk - Response: NoError, NoData
+
+2021-03-01T12:35:26Z 192.168.16.1 - Query: MX example.org - Response: NoError, Rcode: 3
+
+2021-03-01T12:35:27Z 10.0.8.8 - Query: TXT subdomain.example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:28Z 192.168.17.3 - Query: CNAME backup-mail.example.co.uk - Response: NoError, Rcode: 3
+
+2021-03-01T12:35:29Z 10.0.9.9 - Query: A www.example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:30Z 192.168.18.7 - Query: NS example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:31Z 172.16.0.7 - Query: AAAA mail.example.co.uk - Response: NoError, NoData
+
+2021-03-01T12:35:32Z 192.168.19.1 - Query: MX example.org - Response: NoError, Rcode: 3
+
+2021-03-01T12:35:33Z 10.0.10.10 - Query: TXT subdomain.example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:34Z 192.168.20.4 - Query: CNAME backup-mail.example.co.uk - Response: NoError, Rcode: 3
+
+2021-03-01T12:35:35Z 10.0.11.11 - Query: A www.example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:36Z 192.168.21.7 - Query: NS example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:37Z 172.16.0.8 - Query: AAAA mail.example.co.uk - Response: NoError, NoData
+
+2021-03-01T12:35:38Z 192.168.22.1 - Query: MX example.org - Response: NoError, Rcode: 3
+
+2021-03-01T12:35:39Z 10.0.12.12 - Query: TXT subdomain.example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:40Z 192.168.23.3 - Query: CNAME backup-mail.example.co.uk - Response: NoError, Rcode: 3
+
+2021-03-01T12:35:41Z 10.0.13.13 - Query: A www.example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:42Z 192.168.24.7 - Query: NS example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:43Z 172.16.0.9 - Query: AAAA mail.example.co.uk - Response: NoError, NoData
+
+2021-03-01T12:35:44Z 192.168.25.1 - Query: MX example.org - Response: NoError, Rcode: 3
+
+2021-03-01T12:35:45Z 10.0.14.14 - Query: TXT subdomain.example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:46Z 192.168.26.4 - Query: CNAME backup-mail.example.co.uk - Response: NoError, Rcode: 3
+
+2021-03-01T12:35:47Z 10.0.15.15 - Query: A www.example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:48Z 192.168.27.7 - Query: NS example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:49Z 172.16.0.10 - Query: AAAA mail.example.co.uk - Response: NoError, NoData
+
+2021-03-01T12:35:50Z 192.168.28.1 - Query: MX example.org - Response: NoError, Rcode: 3
+
+2021-03-01T12:35:51Z 10.0.16.16 - Query: TXT subdomain.example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:52Z 192.168.29.4 - Query: CNAME backup-mail.example.co.uk - Response: NoError, Rcode: 3
+
+2021-03-01T12:35:53Z 10.0.17.17 - Query: A www.example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:54Z 192.168.30.7 - Query: NS example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:55Z 172.16.0.11 - Query: AAAA mail.example.co.uk - Response: NoError, NoData
+
+2021-03-01T12:35:56Z 192.168.31.1 - Query: MX example.org - Response: NoError, Rcode: 3
+
+2021-03-01T12:35:57Z 10.0.18.18 - Query: TXT subdomain.example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:35:58Z 192.168.32.4 - Query: CNAME backup-mail.example.co.uk - Response: NoError, Rcode: 3
+
+2021-03-01T12:35:59Z 10.0.19.19 - Query: A www.example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:36:00Z 192.168.33.7 - Query: NS example.co.uk - Response: NoError, NXDOMAIN
+
+2021-03-01T12:36:01Z 172.16.0.12 - Query: AAAA mail.example.co.uk - Response: NoError, NoData
