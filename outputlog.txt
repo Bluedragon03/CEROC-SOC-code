@@ -1,131 +1,85 @@
- 2021-03-01T12:34:56Z 192.168.1.10 - Query: AAAA example.com - Response: NoError, NoData
+ 2021-03-09T18:47:36Z 192.168.1.10 - Query: AAAA example.com - Response: NoError, NoAnswer
 
-2021-03-01T12:34:57Z 10.0.0.2 - Query: MX mail.example.org - Response: NoError, Rcode: 0
+2021-03-09T18:47:36Z 172.16.254.101 - Query: MX example.org - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: example.org MX preference=10, mail exchanger=mail.example.org
 
-2021-03-01T12:34:58Z 192.168.2.15 - Query: TXT subdomain.example.com - Response: NoError, Rcode: 0
+2021-03-09T18:47:36Z 255.255.255.254 - Query: NS www.google.com - Response: NoError, Rcode: 0, Answer count: 3, Authoritative answer: ns1.google.com, ns2.google.com, ns3.google.com
 
-2021-03-01T12:34:59Z 172.16.0.1 - Query: NS example.net - Response: NoError, Rcode: 0
+2021-03-09T18:47:36Z 10.0.0.5 - Query: TXT sub.domain.tld - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: "v=spf1 ip4:192.168.1.0/24 -all"
 
-2021-03-01T12:35:00Z 192.168.3.4 - Query: A www.example.org - Response: NoError, Rcode: 0
+2021-03-09T18:47:36Z 192.168.5.123 - Query: CNAME myalias.example.net - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: alias.example.com
 
-2021-03-01T12:35:01Z 10.0.1.2 - Query: CNAME alias.example.com - Response: NoError, Rcode: 0
+2021-03-09T18:47:36Z 10.10.10.1 - Query: A www.example.com - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: 192.0.2.1
 
-2021-03-01T12:35:02Z 192.168.4.2 - Query: AAAA *.example.net - Response: NoError, NoData
+2021-03-09T18:47:36Z 203.0.113.5 - Query: AAAA sub.example.org - Response: NoError, Rcode: 0, Answer count: 0, No answers from authoritative name server(s)
 
-2021-03-01T12:35:03Z 172.16.0.15 - Query: MX backup-mail.example.org - Response: NoError, Rcode: 0
+2021-03-09T18:47:36Z 192.168.1.200 - Query: NS example.net - Response: NoError, Rcode: 0, Answer count: 3, Authoritative answer: dns1.example.net, dns2.example.net, dns3.example.net
 
-2021-03-01T12:35:04Z 192.168.5.3 - Query: TXT example.co.uk - Response: NoError, NXDOMAIN
+2021-03-09T18:47:36Z 172.16.5.20 - Query: MX example.co.uk - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: example.co.uk MX preference=10, mail exchanger=mail.example.co.uk
 
-2021-03-01T12:35:05Z 10.0.2.4 - Query: CNAME sub.example.net - Response: NoError, Rcode: 3
+2021-03-09T18:47:36Z 255.255.255.255 - Query: TXT example.com - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: "v=spf1 ip4:192.168.1.0/24 -all"
 
-2021-03-01T12:35:06Z 192.168.6.1 - Query: NS example.org - Response: NoError, NXDOMAIN
+2021-03-09T18:47:36Z 10.0.0.254 - Query: CNAME www.sub.domain.tld - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: main.domain.tld
 
-2021-03-01T12:35:07Z 172.16.0.2 - Query: AAAA *.example.co.uk - Response: NoError, NoData
+2021-03-09T18:47:36Z 192.168.5.122 - Query: A www.google.net - Response: NoError, Rcode: 3, Answer count: 0, No answers from authoritative name server(s)
 
-2021-03-01T12:35:08Z 192.168.7.4 - Query: MX mail.example.co.uk - Response: NoError, NXDOMAIN
+2021-03-09T18:47:36Z 172.16.254.102 - Query: AAAA example.info - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: 2001:0db8:85a3:0000:0000:8a2e:0370:7334
 
-2021-03-01T12:35:09Z 10.0.3.3 - Query: TXT www.example.co.uk - Response: NoError, NXDOMAIN
+2021-03-09T18:47:36Z 255.255.255.255 - Query: MX example.io - Response: NoError, Rcode: 0, Answer count: 0, No answers from authoritative name server(s)
 
-2021-03-01T12:35:10Z 192.168.8.5 - Query: CNAME backup.example.org - Response: NoError, Rcode: 3
+2021-03-09T18:47:36Z 10.0.0.5 - Query: CNAME alias.example.org - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: myalias.example.net
 
-2021-03-01T12:35:11Z 172.16.0.3 - Query: A www.example.co.uk - Response: NoError, NXDOMAIN
+2021-03-09T18:47:36Z 192.168.1.10 - Query: A www.example.net - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: 192.0.2.2
 
-2021-03-01T12:35:12Z 192.168.9.1 - Query: NS backup-example.net - Response: NoError, NXDOMAIN
+2021-03-09T18:47:36Z 172.16.5.20 - Query: AAAA sub.example.co.uk - Response: NoError, Rcode: 0, Answer count: 0, No answers from authoritative name server(s)
 
-2021-03-01T12:35:13Z 10.0.4.2 - Query: AAAA mail.example.co.uk - Response: NoError, NoData
+2021-03-09T18:47:36Z 255.255.255.255 - Query: TXT example.net - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: "v=spf1 ip4:192.168.1.0/24 -all"
 
-2021-03-01T12:35:14Z 192.168.10.7 - Query: MX example.org - Response: NoError, Rcode: 3
+2021-03-09T18:47:36Z 10.0.0.253 - Query: CNAME main.sub.domain.tld - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: www.sub.domain.tld
 
-2021-03-01T12:35:15Z 172.16.0.4 - Query: TXT subdomain.example.co.uk - Response: NoError, NXDOMAIN
+2021-03-09T18:47:36Z 192.168.5.121 - Query: A www.google.co.jp - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: 172.25.14.11
 
-2021-03-01T12:35:16Z 192.168.11.3 - Query: CNAME backup-mail.example.co.uk - Response: NoError, Rcode: 3
+2021-03-09T18:47:36Z 172.16.254.103 - Query: AAAA example.tv - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: 2001:4860:4860::8844
 
-2021-03-01T12:35:17Z 10.0.5.4 - Query: A www.example.org - Response: NoError, NXDOMAIN
+2021-03-09T18:47:36Z 255.255.255.255 - Query: MX example.mil - Response: NoError, Rcode: 0, Answer count: 0, No answers from authoritative name server(s)
 
-2021-03-01T12:35:18Z 192.168.12.10 - Query: NS example.co.uk - Response: NoError, NXDOMAIN
+2021-03-09T18:47:36Z 10.0.0.5 - Query: CNAME myalias.example.org - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: alias.example.net
 
-2021-03-01T12:35:19Z 172.16.0.5 - Query: AAAA mail.example.co.uk - Response: NoError, NoData
+2021-03-09T18:47:36Z 192.168.1.10 - Query: AAAA www.example.com - Response: NoError, Rcode: 0, Answer count: 0, No answers from authoritative name server(s)
 
-2021-03-01T12:35:20Z 192.168.13.2 - Query: MX example.org - Response: NoError, Rcode: 3
+2021-03-09T18:47:36Z 172.16.5.20 - Query: A www.example.co.uk - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: 216.58.194.123
 
-2021-03-01T12:35:21Z 10.0.6.6 - Query: TXT subdomain.example.co.uk - Response: NoError, NXDOMAIN
+2021-03-09T18:47:36Z 255.255.255.255 - Query: TXT example.io - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: "v=spf1 ip4:192.168.1.0/24 -all"
 
-2021-03-01T12:35:22Z 192.168.14.7 - Query: CNAME backup-mail.example.co.uk - Response: NoError, Rcode: 3
+2021-03-09T18:47:36Z 10.0.0.254 - Query: CNAME main.sub.domain.tld - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: www.sub.domain.tld
 
-2021-03-01T12:35:23Z 10.0.7.2 - Query: A www.example.co.uk - Response: NoError, NXDOMAIN
+2021-03-09T18:47:36Z 192.168.5.122 - Query: A www.google.net - Response: NoError, Rcode: 3, Answer count: 0, No answers from authoritative name server(s)
 
-2021-03-01T12:35:24Z 192.168.15.4 - Query: NS example.co.uk - Response: NoError, NXDOMAIN
+2021-03-09T18:47:36Z 172.16.254.102 - Query: AAAA example.info - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: 2001:0db8:85a3:0000:0000:8a2e:0370:7334
 
-2021-03-01T12:35:25Z 172.16.0.6 - Query: AAAA mail.example.co.uk - Response: NoError, NoData
+2021-03-09T18:47:36Z 255.255.255.255 - Query: MX example.io - Response: NoError, Rcode: 0, Answer count: 0, No answers from authoritative name server(s)
 
-2021-03-01T12:35:26Z 192.168.16.1 - Query: MX example.org - Response: NoError, Rcode: 3
+2021-03-09T18:47:36Z 10.0.0.5 - Query: CNAME alias.example.org - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: myalias.example.net
 
-2021-03-01T12:35:27Z 10.0.8.8 - Query: TXT subdomain.example.co.uk - Response: NoError, NXDOMAIN
+2021-03-09T18:47:36Z 192.168.1.10 - Query: A www.example.net - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: 192.0.2.2
 
-2021-03-01T12:35:28Z 192.168.17.3 - Query: CNAME backup-mail.example.co.uk - Response: NoError, Rcode: 3
+2021-03-09T18:47:36Z 172.16.5.20 - Query: AAAA sub.example.co.uk - Response: NoError, Rcode: 0, Answer count: 0, No answers from authoritative name server(s)
 
-2021-03-01T12:35:29Z 10.0.9.9 - Query: A www.example.co.uk - Response: NoError, NXDOMAIN
+2021-03-09T18:47:36Z 255.255.255.255 - Query: TXT example.net - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: "v=spf1 ip4:192.168.1.0/24 -all"
 
-2021-03-01T12:35:30Z 192.168.18.7 - Query: NS example.co.uk - Response: NoError, NXDOMAIN
+2021-03-09T18:47:36Z 10.0.0.253 - Query: CNAME main.sub.domain.tld - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: www.sub.domain.tld
 
-2021-03-01T12:35:31Z 172.16.0.7 - Query: AAAA mail.example.co.uk - Response: NoError, NoData
+2021-03-09T18:47:36Z 192.168.5.121 - Query: A www.google.co.jp - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: 172.25.14.11
 
-2021-03-01T12:35:32Z 192.168.19.1 - Query: MX example.org - Response: NoError, Rcode: 3
+2021-03-09T18:47:36Z 172.16.254.103 - Query: AAAA example.tv - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: 2001:4860:4860::8844
 
-2021-03-01T12:35:33Z 10.0.10.10 - Query: TXT subdomain.example.co.uk - Response: NoError, NXDOMAIN
+2021-03-09T18:47:36Z 255.255.255.255 - Query: MX example.mil - Response: NoError, Rcode: 0, Answer count: 0, No answers from authoritative name server(s)
 
-2021-03-01T12:35:34Z 192.168.20.4 - Query: CNAME backup-mail.example.co.uk - Response: NoError, Rcode: 3
+2021-03-09T18:47:36Z 10.0.0.5 - Query: CNAME myalias.example.org - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: alias.example.net
 
-2021-03-01T12:35:35Z 10.0.11.11 - Query: A www.example.co.uk - Response: NoError, NXDOMAIN
+2021-03-09T18:47:36Z 192.168.1.10 - Query: AAAA www.example.com - Response: NoError, Rcode: 0, Answer count: 0, No answers from authoritative name server(s)
 
-2021-03-01T12:35:36Z 192.168.21.7 - Query: NS example.co.uk - Response: NoError, NXDOMAIN
+2021-03-09T18:47:36Z 172.16.5.20 - Query: A www.example.co.uk - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: 216.58.194.123
 
-2021-03-01T12:35:37Z 172.16.0.8 - Query: AAAA mail.example.co.uk - Response: NoError, NoData
+2021-03-09T18:47:36Z 255.255.255.255 - Query: TXT example.io - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: "v=spf1 ip4:192.168.1.0/24 -all"
 
-2021-03-01T12:35:38Z 192.168.22.1 - Query: MX example.org - Response: NoError, Rcode: 3
-
-2021-03-01T12:35:39Z 10.0.12.12 - Query: TXT subdomain.example.co.uk - Response: NoError, NXDOMAIN
-
-2021-03-01T12:35:40Z 192.168.23.3 - Query: CNAME backup-mail.example.co.uk - Response: NoError, Rcode: 3
-
-2021-03-01T12:35:41Z 10.0.13.13 - Query: A www.example.co.uk - Response: NoError, NXDOMAIN
-
-2021-03-01T12:35:42Z 192.168.24.7 - Query: NS example.co.uk - Response: NoError, NXDOMAIN
-
-2021-03-01T12:35:43Z 172.16.0.9 - Query: AAAA mail.example.co.uk - Response: NoError, NoData
-
-2021-03-01T12:35:44Z 192.168.25.1 - Query: MX example.org - Response: NoError, Rcode: 3
-
-2021-03-01T12:35:45Z 10.0.14.14 - Query: TXT subdomain.example.co.uk - Response: NoError, NXDOMAIN
-
-2021-03-01T12:35:46Z 192.168.26.4 - Query: CNAME backup-mail.example.co.uk - Response: NoError, Rcode: 3
-
-2021-03-01T12:35:47Z 10.0.15.15 - Query: A www.example.co.uk - Response: NoError, NXDOMAIN
-
-2021-03-01T12:35:48Z 192.168.27.7 - Query: NS example.co.uk - Response: NoError, NXDOMAIN
-
-2021-03-01T12:35:49Z 172.16.0.10 - Query: AAAA mail.example.co.uk - Response: NoError, NoData
-
-2021-03-01T12:35:50Z 192.168.28.1 - Query: MX example.org - Response: NoError, Rcode: 3
-
-2021-03-01T12:35:51Z 10.0.16.16 - Query: TXT subdomain.example.co.uk - Response: NoError, NXDOMAIN
-
-2021-03-01T12:35:52Z 192.168.29.4 - Query: CNAME backup-mail.example.co.uk - Response: NoError, Rcode: 3
-
-2021-03-01T12:35:53Z 10.0.17.17 - Query: A www.example.co.uk - Response: NoError, NXDOMAIN
-
-2021-03-01T12:35:54Z 192.168.30.7 - Query: NS example.co.uk - Response: NoError, NXDOMAIN
-
-2021-03-01T12:35:55Z 172.16.0.11 - Query: AAAA mail.example.co.uk - Response: NoError, NoData
-
-2021-03-01T12:35:56Z 192.168.31.1 - Query: MX example.org - Response: NoError, Rcode: 3
-
-2021-03-01T12:35:57Z 10.0.18.18 - Query: TXT subdomain.example.co.uk - Response: NoError, NXDOMAIN
-
-2021-03-01T12:35:58Z 192.168.32.4 - Query: CNAME backup-mail.example.co.uk - Response: NoError, Rcode: 3
-
-2021-03-01T12:35:59Z 10.0.19.19 - Query: A www.example.co.uk - Response: NoError, NXDOMAIN
-
-2021-03-01T12:36:00Z 192.168.33.7 - Query: NS example.co.uk - Response: NoError, NXDOMAIN
-
-2021-03-01T12:36:01Z 172.16.0.12 - Query: AAAA mail.example.co.uk - Response: NoError, NoData
+2021-03-09T18:47:36Z 10.0.0.254 - Query: CNAME main.sub.domain.tld - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: www.sub.domain.tld
