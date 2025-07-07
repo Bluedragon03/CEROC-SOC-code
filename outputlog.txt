@@ -1,85 +1,581 @@
- 2021-03-09T18:47:36Z 192.168.1.10 - Query: AAAA example.com - Response: NoError, NoAnswer
+ 2021-01-01T00:00:01Z 192.168.1.10 A example.com 172.67.0.2 0
 
-2021-03-09T18:47:36Z 172.16.254.101 - Query: MX example.org - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: example.org MX preference=10, mail exchanger=mail.example.org
+2021-01-01T00:00:02Z 192.168.1.11 A google.com 142.250.73.103 0
 
-2021-03-09T18:47:36Z 255.255.255.254 - Query: NS www.google.com - Response: NoError, Rcode: 0, Answer count: 3, Authoritative answer: ns1.google.com, ns2.google.com, ns3.google.com
+2021-01-01T00:00:03Z 192.168.1.12 A facebook.com 34.74.194.93 0
 
-2021-03-09T18:47:36Z 10.0.0.5 - Query: TXT sub.domain.tld - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: "v=spf1 ip4:192.168.1.0/24 -all"
+2021-01-01T00:00:04Z 192.168.1.13 A twitter.com 104.16.158.33 0
 
-2021-03-09T18:47:36Z 192.168.5.123 - Query: CNAME myalias.example.net - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: alias.example.com
+2021-01-01T00:00:05Z 192.168.1.14 A youtube.com 206.0.111.1 0
 
-2021-03-09T18:47:36Z 10.10.10.1 - Query: A www.example.com - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: 192.0.2.1
+2021-01-01T00:00:06Z 192.168.1.15 A microsoft.com 13.107.1.187 0
 
-2021-03-09T18:47:36Z 203.0.113.5 - Query: AAAA sub.example.org - Response: NoError, Rcode: 0, Answer count: 0, No answers from authoritative name server(s)
+2021-01-01T00:00:07Z 192.168.1.16 A amazon.com 192.168.1.1 0
 
-2021-03-09T18:47:36Z 192.168.1.200 - Query: NS example.net - Response: NoError, Rcode: 0, Answer count: 3, Authoritative answer: dns1.example.net, dns2.example.net, dns3.example.net
+2021-01-01T00:00:08Z 192.168.1.17 A apple.com 103.115.247.212 0
 
-2021-03-09T18:47:36Z 172.16.5.20 - Query: MX example.co.uk - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: example.co.uk MX preference=10, mail exchanger=mail.example.co.uk
+2021-01-01T00:00:09Z 192.168.1.18 A reddit.com 172.67.0.2 0
 
-2021-03-09T18:47:36Z 255.255.255.255 - Query: TXT example.com - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: "v=spf1 ip4:192.168.1.0/24 -all"
+2021-01-01T00:00:10Z 192.168.1.19 A example.com 8.8.8.8 35
 
-2021-03-09T18:47:36Z 10.0.0.254 - Query: CNAME www.sub.domain.tld - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: main.domain.tld
+2021-01-01T00:00:11Z 192.168.1.20 A google.com 147.145.214.202 35
 
-2021-03-09T18:47:36Z 192.168.5.122 - Query: A www.google.net - Response: NoError, Rcode: 3, Answer count: 0, No answers from authoritative name server(s)
+2021-01-01T00:00:12Z 192.168.1.21 A facebook.com 195.46.39.172 35
 
-2021-03-09T18:47:36Z 172.16.254.102 - Query: AAAA example.info - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+2021-01-01T00:00:13Z 192.168.1.22 A twitter.com 103.10.220.245 35
 
-2021-03-09T18:47:36Z 255.255.255.255 - Query: MX example.io - Response: NoError, Rcode: 0, Answer count: 0, No answers from authoritative name server(s)
+2021-01-01T00:00:14Z 192.168.1.23 A youtube.com 173.194.109.85 35
 
-2021-03-09T18:47:36Z 10.0.0.5 - Query: CNAME alias.example.org - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: myalias.example.net
+2021-01-01T00:00:15Z 192.168.1.24 A microsoft.com 185.132.197.183 35
 
-2021-03-09T18:47:36Z 192.168.1.10 - Query: A www.example.net - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: 192.0.2.2
+2021-01-01T00:00:16Z 192.168.1.25 A amazon.com 184.72.239.171 35
 
-2021-03-09T18:47:36Z 172.16.5.20 - Query: AAAA sub.example.co.uk - Response: NoError, Rcode: 0, Answer count: 0, No answers from authoritative name server(s)
+2021-01-01T00:00:17Z 192.168.1.26 A apple.com 176.32.207.143 35
 
-2021-03-09T18:47:36Z 255.255.255.255 - Query: TXT example.net - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: "v=spf1 ip4:192.168.1.0/24 -all"
+2021-01-01T00:00:18Z 192.168.1.27 A reddit.com 172.217.192.68 35
 
-2021-03-09T18:47:36Z 10.0.0.253 - Query: CNAME main.sub.domain.tld - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: www.sub.domain.tld
+2021-01-01T00:00:19Z 192.168.1.28 A example.com 192.168.1.1 35
 
-2021-03-09T18:47:36Z 192.168.5.121 - Query: A www.google.co.jp - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: 172.25.14.11
+2021-01-01T00:00:20Z 192.168.1.29 A google.com 173.194.121.122 35
 
-2021-03-09T18:47:36Z 172.16.254.103 - Query: AAAA example.tv - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: 2001:4860:4860::8844
+2021-01-01T00:00:21Z 192.168.1.30 A facebook.com 140.82.147.134 35
 
-2021-03-09T18:47:36Z 255.255.255.255 - Query: MX example.mil - Response: NoError, Rcode: 0, Answer count: 0, No answers from authoritative name server(s)
+2021-01-01T00:00:22Z 192.168.1.31 A twitter.com 185.225.149.222 35
 
-2021-03-09T18:47:36Z 10.0.0.5 - Query: CNAME myalias.example.org - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: alias.example.net
+2021-01-01T00:00:23Z 192.168.1.32 A youtube.com 172.217.192.68 35
 
-2021-03-09T18:47:36Z 192.168.1.10 - Query: AAAA www.example.com - Response: NoError, Rcode: 0, Answer count: 0, No answers from authoritative name server(s)
+2021-01-01T00:00:24Z 192.168.1.33 A microsoft.com 188.114.96.156 35
 
-2021-03-09T18:47:36Z 172.16.5.20 - Query: A www.example.co.uk - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: 216.58.194.123
+2021-01-01T00:00:25Z 192.168.1.34 A amazon.com 72.21.204.45 35
 
-2021-03-09T18:47:36Z 255.255.255.255 - Query: TXT example.io - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: "v=spf1 ip4:192.168.1.0/24 -all"
+2021-01-01T00:00:26Z 192.168.1.35 A apple.com 184.170.247.153 35
 
-2021-03-09T18:47:36Z 10.0.0.254 - Query: CNAME main.sub.domain.tld - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: www.sub.domain.tld
+2021-01-01T00:00:27Z 192.168.1.36 A reddit.com 185.132.197.183 35
 
-2021-03-09T18:47:36Z 192.168.5.122 - Query: A www.google.net - Response: NoError, Rcode: 3, Answer count: 0, No answers from authoritative name server(s)
+2021-01-01T00:00:28Z 192.168.1.37 A example.com 8.8.8.8 35
 
-2021-03-09T18:47:36Z 172.16.254.102 - Query: AAAA example.info - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+2021-01-01T00:00:29Z 192.168.1.38 A google.com 173.194.133.128 35
 
-2021-03-09T18:47:36Z 255.255.255.255 - Query: MX example.io - Response: NoError, Rcode: 0, Answer count: 0, No answers from authoritative name server(s)
+2021-01-01T00:00:30Z 192.168.1.39 A facebook.com 195.46.39.172 35
 
-2021-03-09T18:47:36Z 10.0.0.5 - Query: CNAME alias.example.org - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: myalias.example.net
+2021-01-01T00:00:31Z 192.168.1.40 A twitter.com 103.10.220.245 35
 
-2021-03-09T18:47:36Z 192.168.1.10 - Query: A www.example.net - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: 192.0.2.2
+2021-01-01T00:00:32Z 192.168.1.41 A youtube.com 173.194.115.137 35
 
-2021-03-09T18:47:36Z 172.16.5.20 - Query: AAAA sub.example.co.uk - Response: NoError, Rcode: 0, Answer count: 0, No answers from authoritative name server(s)
+2021-01-01T00:00:33Z 192.168.1.42 A microsoft.com 185.132.197.183 35
 
-2021-03-09T18:47:36Z 255.255.255.255 - Query: TXT example.net - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: "v=spf1 ip4:192.168.1.0/24 -all"
+2021-01-01T00:00:34Z 192.168.1.43 A amazon.com 103.115.247.212 35
 
-2021-03-09T18:47:36Z 10.0.0.253 - Query: CNAME main.sub.domain.tld - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: www.sub.domain.tld
+2021-01-01T00:00:35Z 192.168.1.44 A apple.com 176.32.207.143 35
 
-2021-03-09T18:47:36Z 192.168.5.121 - Query: A www.google.co.jp - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: 172.25.14.11
+2021-01-01T00:00:36Z 192.168.1.45 A reddit.com 188.114.96.156 35
 
-2021-03-09T18:47:36Z 172.16.254.103 - Query: AAAA example.tv - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: 2001:4860:4860::8844
+2021-01-01T00:00:37Z 192.168.1.46 A example.com 8.8.4.4 35
 
-2021-03-09T18:47:36Z 255.255.255.255 - Query: MX example.mil - Response: NoError, Rcode: 0, Answer count: 0, No answers from authoritative name server(s)
+2021-01-01T00:00:38Z 192.168.1.47 A google.com 192.33.4.51 35
 
-2021-03-09T18:47:36Z 10.0.0.5 - Query: CNAME myalias.example.org - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: alias.example.net
+2021-01-01T00:00:39Z 192.168.1.48 A facebook.com 192.26.229.236 35
 
-2021-03-09T18:47:36Z 192.168.1.10 - Query: AAAA www.example.com - Response: NoError, Rcode: 0, Answer count: 0, No answers from authoritative name server(s)
+2021-01-01T00:00:40Z 192.168.1.49 A twitter.com 185.132.197.183 35
 
-2021-03-09T18:47:36Z 172.16.5.20 - Query: A www.example.co.uk - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: 216.58.194.123
+2021-01-01T00:00:41Z 192.168.1.50 A youtube.com 172.217.192.68 35
 
-2021-03-09T18:47:36Z 255.255.255.255 - Query: TXT example.io - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: "v=spf1 ip4:192.168.1.0/24 -all"
+2021-01-01T00:00:42Z 192.168.1.51 A microsoft.com 184.170.247.153 35
 
-2021-03-09T18:47:36Z 10.0.0.254 - Query: CNAME main.sub.domain.tld - Response: NoError, Rcode: 0, Answer count: 1, Authoritative answer: www.sub.domain.tld
+2021-01-01T00:00:43Z 192.168.1.52 A amazon.com 198.51.100.177 35
+
+2021-01-01T00:00:44Z 192.168.1.53 A apple.com 103.115.247.212 35
+
+2021-01-01T00:00:45Z 192.168.1.54 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:00:46Z 192.168.1.55 A example.com 172.67.0.2 35
+
+2021-01-01T00:00:47Z 192.168.1.56 A google.com 8.8.8.8 35
+
+2021-01-01T00:00:48Z 192.168.1.57 A facebook.com 173.194.121.122 35
+
+2021-01-01T00:00:49Z 192.168.1.58 A twitter.com 103.10.220.245 35
+
+2021-01-01T00:00:50Z 192.168.1.59 A youtube.com 172.217.192.68 35
+
+2021-01-01T00:00:51Z 192.168.1.60 A microsoft.com 184.170.247.153 35
+
+2021-01-01T00:00:52Z 192.168.1.61 A amazon.com 185.132.197.183 35
+
+2021-01-01T00:00:53Z 192.168.1.62 A apple.com 103.115.247.212 35
+
+2021-01-01T00:00:54Z 192.168.1.63 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:00:55Z 192.168.1.64 A example.com 172.67.0.2 35
+
+2021-01-01T00:00:56Z 192.168.1.65 A google.com 147.145.214.202 35
+
+2021-01-01T00:00:57Z 192.168.1.66 A facebook.com 195.46.39.172 35
+
+2021-01-01T00:00:58Z 192.168.1.67 A twitter.com 185.225.149.222 35
+
+2021-01-01T00:00:59Z 192.168.1.68 A youtube.com 173.194.115.137 35
+
+2021-01-01T00:01:00Z 192.168.1.69 A microsoft.com 185.132.197.183 35
+
+2021-01-01T00:01:01Z 192.168.1.70 A amazon.com 103.115.247.212 35
+
+2021-01-01T00:01:02Z 192.168.1.71 A apple.com 176.32.207.143 35
+
+2021-01-01T00:01:03Z 192.168.1.72 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:01:04Z 192.168.1.73 A example.com 172.67.0.2 35
+
+2021-01-01T00:01:05Z 192.168.1.74 A google.com 147.145.214.202 35
+
+2021-01-01T00:01:06Z 192.168.1.75 A facebook.com 195.46.39.172 35
+
+2021-01-01T00:01:07Z 192.168.1.76 A twitter.com 185.225.149.222 35
+
+2021-01-01T00:01:08Z 192.168.1.77 A youtube.com 173.194.115.137 35
+
+2021-01-01T00:01:09Z 192.168.1.78 A microsoft.com 185.132.197.183 35
+
+2021-01-01T00:01:10Z 192.168.1.79 A amazon.com 103.115.247.212 35
+
+2021-01-01T00:01:11Z 192.168.1.80 A apple.com 176.32.207.143 35
+
+2021-01-01T00:01:12Z 192.168.1.81 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:01:13Z 192.168.1.82 A example.com 172.67.0.2 35
+
+2021-01-01T00:01:14Z 192.168.1.83 A google.com 147.145.214.202 35
+
+2021-01-01T00:01:15Z 192.168.1.84 A facebook.com 195.46.39.172 35
+
+2021-01-01T00:01:16Z 192.168.1.85 A twitter.com 185.225.149.222 35
+
+2021-01-01T00:01:17Z 192.168.1.86 A youtube.com 173.194.115.137 35
+
+2021-01-01T00:01:18Z 192.168.1.87 A microsoft.com 185.132.197.183 35
+
+2021-01-01T00:01:19Z 192.168.1.88 A amazon.com 103.115.247.212 35
+
+2021-01-01T00:01:20Z 192.168.1.89 A apple.com 176.32.207.143 35
+
+2021-01-01T00:01:21Z 192.168.1.90 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:01:22Z 192.168.1.91 A example.com 172.67.0.2 35
+
+2021-01-01T00:01:23Z 192.168.1.92 A google.com 147.145.214.202 35
+
+2021-01-01T00:01:24Z 192.168.1.93 A facebook.com 195.46.39.172 35
+
+2021-01-01T00:01:25Z 192.168.1.94 A twitter.com 185.225.149.222 35
+
+2021-01-01T00:01:26Z 192.168.1.95 A youtube.com 173.194.115.137 35
+
+2021-01-01T00:01:27Z 192.168.1.96 A microsoft.com 185.132.197.183 35
+
+2021-01-01T00:01:28Z 192.168.1.97 A amazon.com 103.115.247.212 35
+
+2021-01-01T00:01:29Z 192.168.1.98 A apple.com 176.32.207.143 35
+
+2021-01-01T00:01:30Z 192.168.1.99 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:01:31Z 192.168.1.100 A example.com 172.67.0.2 35
+
+2021-01-01T00:01:32Z 192.168.1.101 A google.com 147.145.214.202 35
+
+2021-01-01T00:01:33Z 192.168.1.102 A facebook.com 195.46.39.172 35
+
+2021-01-01T00:01:34Z 192.168.1.103 A twitter.com 185.225.149.222 35
+
+2021-01-01T00:01:35Z 192.168.1.104 A youtube.com 173.194.115.137 35
+
+2021-01-01T00:01:36Z 192.168.1.105 A microsoft.com 185.132.197.183 35
+
+2021-01-01T00:01:37Z 192.168.1.106 A amazon.com 103.115.247.212 35
+
+2021-01-01T00:01:38Z 192.168.1.107 A apple.com 176.32.207.143 35
+
+2021-01-01T00:01:39Z 192.168.1.108 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:01:40Z 192.168.1.109 A example.com 172.67.0.2 35
+
+2021-01-01T00:01:41Z 192.168.1.110 A google.com 147.145.214.202 35
+
+2021-01-01T00:01:42Z 192.168.1.111 A facebook.com 195.46.39.172 35
+
+2021-01-01T00:01:43Z 192.168.1.112 A twitter.com 185.225.149.222 35
+
+2021-01-01T00:01:44Z 192.168.1.113 A youtube.com 173.194.115.137 35
+
+2021-01-01T00:01:45Z 192.168.1.114 A microsoft.com 185.132.197.183 35
+
+2021-01-01T00:01:46Z 192.168.1.115 A amazon.com 103.115.247.212 35
+
+2021-01-01T00:01:47Z 192.168.1.116 A apple.com 176.32.207.143 35
+
+2021-01-01T00:01:48Z 192.168.1.117 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:01:49Z 192.168.1.118 A example.com 172.67.0.2 35
+
+2021-01-01T00:01:50Z 192.168.1.119 A google.com 147.145.214.202 35
+
+2021-01-01T00:01:51Z 192.168.1.120 A facebook.com 195.46.39.172 35
+
+2021-01-01T00:01:52Z 192.168.1.121 A twitter.com 185.225.149.222 35
+
+2021-01-01T00:01:53Z 192.168.1.122 A youtube.com 173.194.115.137 35
+
+2021-01-01T00:01:54Z 192.168.1.123 A microsoft.com 185.132.197.183 35
+
+2021-01-01T00:01:55Z 192.168.1.124 A amazon.com 103.115.247.212 35
+
+2021-01-01T00:01:56Z 192.168.1.125 A apple.com 176.32.207.143 35
+
+2021-01-01T00:01:57Z 192.168.1.126 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:01:58Z 192.168.1.127 A example.com 172.67.0.2 35
+
+2021-01-01T00:01:59Z 192.168.1.128 A google.com 147.145.214.202 35
+
+2021-01-01T00:02:00Z 192.168.1.129 A facebook.com 195.46.39.172 35
+
+2021-01-01T00:02:01Z 192.168.1.130 A twitter.com 185.225.149.222 35
+
+2021-01-01T00:02:02Z 192.168.1.131 A youtube.com 173.194.115.137 35
+
+2021-01-01T00:02:03Z 192.168.1.132 A microsoft.com 185.132.197.183 35
+
+2021-01-01T00:02:04Z 192.168.1.133 A amazon.com 103.115.247.212 35
+
+2021-01-01T00:02:05Z 192.168.1.134 A apple.com 176.32.207.143 35
+
+2021-01-01T00:02:06Z 192.168.1.135 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:02:07Z 192.168.1.136 A example.com 172.67.0.2 35
+
+2021-01-01T00:02:08Z 192.168.1.137 A google.com 147.145.214.202 35
+
+2021-01-01T00:02:09Z 192.168.1.138 A facebook.com 195.46.39.172 35
+
+2021-01-01T00:02:10Z 192.168.1.139 A twitter.com 185.225.149.222 35
+
+2021-01-01T00:02:11Z 192.168.1.140 A youtube.com 173.194.115.137 35
+
+2021-01-01T00:02:12Z 192.168.1.141 A microsoft.com 185.132.197.183 35
+
+2021-01-01T00:02:13Z 192.168.1.142 A amazon.com 103.115.247.212 35
+
+2021-01-01T00:02:14Z 192.168.1.143 A apple.com 176.32.207.143 35
+
+2021-01-01T00:02:15Z 192.168.1.144 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:02:16Z 192.168.1.145 A example.com 172.67.0.2 35
+
+2021-01-01T00:02:17Z 192.168.1.146 A google.com 147.145.214.202 35
+
+2021-01-01T00:02:18Z 192.168.1.147 A facebook.com 195.46.39.172 35
+
+2021-01-01T00:02:19Z 192.168.1.148 A twitter.com 185.225.149.222 35
+
+2021-01-01T00:02:20Z 192.168.1.149 A youtube.com 173.194.115.137 35
+
+2021-01-01T00:02:21Z 192.168.1.150 A microsoft.com 185.132.197.183 35
+
+2021-01-01T00:02:22Z 192.168.1.151 A amazon.com 103.115.247.212 35
+
+2021-01-01T00:02:23Z 192.168.1.152 A apple.com 176.32.207.143 35
+
+2021-01-01T00:02:24Z 192.168.1.153 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:02:25Z 192.168.1.154 A example.com 172.67.0.2 35
+
+2021-01-01T00:02:26Z 192.168.1.155 A google.com 147.145.214.202 35
+
+2021-01-01T00:02:27Z 192.168.1.156 A facebook.com 195.46.39.172 35
+
+2021-01-01T00:02:28Z 192.168.1.157 A twitter.com 185.225.149.222 35
+
+2021-01-01T00:02:29Z 192.168.1.158 A youtube.com 173.194.115.137 35
+
+2021-01-01T00:02:30Z 192.168.1.159 A microsoft.com 185.132.197.183 35
+
+2021-01-01T00:02:31Z 192.168.1.160 A amazon.com 103.115.247.212 35
+
+2021-01-01T00:02:32Z 192.168.1.161 A apple.com 176.32.207.143 35
+
+2021-01-01T00:02:33Z 192.168.1.162 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:02:34Z 192.168.1.163 A example.com 172.67.0.2 35
+
+2021-01-01T00:02:35Z 192.168.1.164 A google.com 147.145.214.202 35
+
+2021-01-01T00:02:36Z 192.168.1.165 A facebook.com 195.46.39.172 35
+
+2021-01-01T00:02:37Z 192.168.1.166 A twitter.com 185.225.149.222 35
+
+2021-01-01T00:02:38Z 192.168.1.167 A youtube.com 173.194.115.137 35
+
+2021-01-01T00:02:39Z 192.168.1.168 A microsoft.com 185.132.197.183 35
+
+2021-01-01T00:02:40Z 192.168.1.169 A amazon.com 103.115.247.212 35
+
+2021-01-01T00:02:41Z 192.168.1.170 A apple.com 176.32.207.143 35
+
+2021-01-01T00:02:42Z 192.168.1.171 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:02:43Z 192.168.1.172 A example.com 172.67.0.2 35
+
+2021-01-01T00:02:44Z 192.168.1.173 A google.com 147.145.214.202 35
+
+2021-01-01T00:02:45Z 192.168.1.174 A facebook.com 195.46.39.172 35
+
+2021-01-01T00:02:46Z 192.168.1.175 A twitter.com 185.225.149.222 35
+
+2021-01-01T00:02:47Z 192.168.1.176 A youtube.com 173.194.115.137 35
+
+2021-01-01T00:02:48Z 192.168.1.177 A microsoft.com 185.132.197.183 35
+
+2021-01-01T00:02:49Z 192.168.1.178 A amazon.com 103.115.247.212 35
+
+2021-01-01T00:02:50Z 192.168.1.179 A apple.com 176.32.207.143 35
+
+2021-01-01T00:02:51Z 192.168.1.180 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:02:52Z 192.168.1.181 A example.com 172.67.0.2 35
+
+2021-01-01T00:02:53Z 192.168.1.182 A google.com 147.145.214.202 35
+
+2021-01-01T00:02:54Z 192.168.1.183 A facebook.com 195.46.39.172 35
+
+2021-01-01T00:02:55Z 192.168.1.184 A twitter.com 185.225.149.222 35
+
+2021-01-01T00:02:56Z 192.168.1.185 A youtube.com 173.194.115.137 35
+
+2021-01-01T00:02:57Z 192.168.1.186 A microsoft.com 185.132.197.183 35
+
+2021-01-01T00:02:58Z 192.168.1.187 A amazon.com 103.115.247.212 35
+
+2021-01-01T00:02:59Z 192.168.1.188 A apple.com 176.32.207.143 35
+
+2021-01-01T00:03:00Z 192.168.1.189 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:03:01Z 192.168.1.190 A example.com 172.67.0.2 35
+
+2021-01-01T00:03:02Z 192.168.1.191 A google.com 147.145.214.202 35
+
+2021-01-01T00:03:03Z 192.168.1.192 A facebook.com 195.46.39.172 35
+
+2021-01-01T00:03:04Z 192.168.1.193 A twitter.com 185.225.149.222 35
+
+2021-01-01T00:03:05Z 192.168.1.194 A youtube.com 173.194.115.137 35
+
+2021-01-01T00:03:06Z 192.168.1.195 A microsoft.com 185.132.197.183 35
+
+2021-01-01T00:03:07Z 192.168.1.196 A amazon.com 103.115.247.212 35
+
+2021-01-01T00:03:08Z 192.168.1.197 A apple.com 176.32.207.143 35
+
+2021-01-01T00:03:09Z 192.168.1.198 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:03:10Z 192.168.1.199 A example.com 172.67.0.2 35
+
+2021-01-01T00:03:11Z 192.168.1.200 A google.com 147.145.214.202 35
+
+2021-01-01T00:03:12Z 192.168.1.201 A facebook.com 195.46.39.172 35
+
+2021-01-01T00:03:13Z 192.168.1.202 A twitter.com 185.225.149.222 35
+
+2021-01-01T00:03:14Z 192.168.1.203 A youtube.com 173.194.115.137 35
+
+2021-01-01T00:03:15Z 192.168.1.204 A microsoft.com 185.132.197.183 35
+
+2021-01-01T00:03:16Z 192.168.1.205 A amazon.com 103.115.247.212 35
+
+2021-01-01T00:03:17Z 192.168.1.206 A apple.com 176.32.207.143 35
+
+2021-01-01T00:03:18Z 192.168.1.207 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:03:19Z 192.168.1.208 A example.com 172.67.0.2 35
+
+2021-01-01T00:03:20Z 192.168.1.209 A google.com 147.145.214.202 35
+
+2021-01-01T00:03:21Z 192.168.1.210 A facebook.com 195.46.39.172 35
+
+2021-01-01T00:03:22Z 192.168.1.211 A twitter.com 185.225.149.222 35
+
+2021-01-01T00:03:23Z 192.168.1.212 A youtube.com 173.194.115.137 35
+
+2021-01-01T00:03:24Z 192.168.1.213 A microsoft.com 185.132.197.183 35
+
+2021-01-01T00:03:25Z 192.168.1.214 A amazon.com 103.115.247.212 35
+
+2021-01-01T00:03:26Z 192.168.1.215 A apple.com 176.32.207.143 35
+
+2021-01-01T00:03:27Z 192.168.1.216 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:03:28Z 192.168.1.217 A example.com 172.67.0.2 35
+
+2021-01-01T00:03:29Z 192.168.1.218 A google.com 147.145.214.202 35
+
+2021-01-01T00:03:30Z 192.168.1.219 A facebook.com 195.46.39.172 35
+
+2021-01-01T00:03:31Z 192.168.1.220 A twitter.com 185.225.149.222 35
+
+2021-01-01T00:03:32Z 192.168.1.221 A youtube.com 173.194.115.137 35
+
+2021-01-01T00:03:33Z 192.168.1.222 A microsoft.com 185.132.197.183 35
+
+2021-01-01T00:03:34Z 192.168.1.223 A amazon.com 103.115.247.212 35
+
+2021-01-01T00:03:35Z 192.168.1.224 A apple.com 176.32.207.143 35
+
+2021-01-01T00:03:36Z 192.168.1.225 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:03:37Z 192.168.1.226 A example.com 172.67.0.2 35
+
+2021-01-01T00:03:38Z 192.168.1.227 A google.com 147.145.214.202 35
+
+2021-01-01T00:03:39Z 192.168.1.228 A facebook.com 195.46.39.172 35
+
+2021-01-01T00:03:40Z 192.168.1.229 A twitter.com 185.225.149.222 35
+
+2021-01-01T00:03:41Z 192.168.1.230 A youtube.com 173.194.115.137 35
+
+2021-01-01T00:03:42Z 192.168.1.231 A microsoft.com 185.132.197.183 35
+
+2021-01-01T00:03:43Z 192.168.1.232 A amazon.com 103.115.247.212 35
+
+2021-01-01T00:03:44Z 192.168.1.233 A apple.com 176.32.207.143 35
+
+2021-01-01T00:03:45Z 192.168.1.234 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:03:46Z 192.168.1.235 A example.com 172.67.0.2 35
+
+2021-01-01T00:03:47Z 192.168.1.236 A google.com 147.145.214.202 35
+
+2021-01-01T00:03:48Z 192.168.1.237 A facebook.com 195.46.39.172 35
+
+2021-01-01T00:03:49Z 192.168.1.238 A twitter.com 185.225.149.222 35
+
+2021-01-01T00:03:50Z 192.168.1.239 A youtube.com 173.194.115.137 35
+
+2021-01-01T00:03:51Z 192.168.1.240 A microsoft.com 185.132.197.183 35
+
+2021-01-01T00:03:52Z 192.168.1.241 A amazon.com 103.115.247.212 35
+
+2021-01-01T00:03:53Z 192.168.1.242 A apple.com 176.32.207.143 35
+
+2021-01-01T00:03:54Z 192.168.1.243 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:03:55Z 192.168.1.244 A example.com 172.67.0.2 35
+
+2021-01-01T00:03:56Z 192.168.1.245 A google.com 147.145.214.202 35
+
+2021-01-01T00:03:57Z 192.168.1.246 A facebook.com 195.46.39.172 35
+
+2021-01-01T00:03:58Z 192.168.1.247 A twitter.com 185.225.149.222 35
+
+2021-01-01T00:03:59Z 192.168.1.248 A youtube.com 173.194.115.137 35
+
+2021-01-01T00:04:00Z 192.168.1.249 A microsoft.com 185.132.197.183 35
+
+2021-01-01T00:04:01Z 192.168.1.250 A amazon.com 103.115.247.212 35
+
+2021-01-01T00:04:02Z 192.168.1.251 A apple.com 176.32.207.143 35
+
+2021-01-01T00:04:03Z 192.168.1.252 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:04:04Z 192.168.1.253 A example.com 172.67.0.2 35
+
+2021-01-01T00:04:05Z 192.168.1.254 A google.com 147.145.214.202 35
+
+2021-01-01T00:04:06Z 192.168.1.255 A facebook.com 195.46.39.172 35
+
+2021-01-01T00:04:07Z 192.168.1.256 A twitter.com 185.225.149.222 35
+
+2021-01-01T00:04:08Z 192.168.1.257 A youtube.com 173.194.115.137 35
+
+2021-01-01T00:04:09Z 192.168.1.258 A microsoft.com 185.132.197.183 35
+
+2021-01-01T00:04:10Z 192.168.1.259 A amazon.com 103.115.247.212 35
+
+2021-01-01T00:04:11Z 192.168.1.260 A apple.com 176.32.207.143 35
+
+2021-01-01T00:04:12Z 192.168.1.261 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:04:13Z 192.168.1.262 A example.com 172.67.0.2 35
+
+2021-01-01T00:04:14Z 192.168.1.263 A google.com 147.145.214.202 35
+
+2021-01-01T00:04:15Z 192.168.1.264 A facebook.com 195.46.39.172 35
+
+2021-01-01T00:04:16Z 192.168.1.265 A twitter.com 185.225.149.222 35
+
+2021-01-01T00:04:17Z 192.168.1.266 A youtube.com 173.194.115.137 35
+
+2021-01-01T00:04:18Z 192.168.1.267 A microsoft.com 185.132.197.183 35
+
+2021-01-01T00:04:19Z 192.168.1.268 A amazon.com 103.115.247.212 35
+
+2021-01-01T00:04:20Z 192.168.1.269 A apple.com 176.32.207.143 35
+
+2021-01-01T00:04:21Z 192.168.1.270 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:04:22Z 192.168.1.271 A example.com 172.67.0.2 35
+
+2021-01-01T00:04:23Z 192.168.1.272 A google.com 147.145.214.202 35
+
+2021-01-01T00:04:24Z 192.168.1.273 A facebook.com 195.46.39.172 35
+
+2021-01-01T00:04:25Z 192.168.1.274 A twitter.com 185.225.149.222 35
+
+2021-01-01T00:04:26Z 192.168.1.275 A youtube.com 173.194.115.137 35
+
+2021-01-01T00:04:27Z 192.168.1.276 A microsoft.com 185.132.197.183 35
+
+2021-01-01T00:04:28Z 192.168.1.277 A amazon.com 103.115.247.212 35
+
+2021-01-01T00:04:29Z 192.168.1.278 A apple.com 176.32.207.143 35
+
+2021-01-01T00:04:30Z 192.168.1.279 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:04:31Z 192.168.1.280 A example.com 172.67.0.2 35
+
+2021-01-01T00:04:32Z 192.168.1.281 A google.com 147.145.214.202 35
+
+2021-01-01T00:04:33Z 192.168.1.282 A facebook.com 195.46.39.172 35
+
+2021-01-01T00:04:34Z 192.168.1.283 A twitter.com 185.225.149.222 35
+
+2021-01-01T00:04:35Z 192.168.1.284 A youtube.com 173.194.115.137 35
+
+2021-01-01T00:04:36Z 192.168.1.285 A microsoft.com 185.132.197.183 35
+
+2021-01-01T00:04:37Z 192.168.1.286 A amazon.com 103.115.247.212 35
+
+2021-01-01T00:04:38Z 192.168.1.287 A apple.com 176.32.207.143 35
+
+2021-01-01T00:04:39Z 192.168.1.288 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:04:40Z 192.168.1.289 A example.com 172.67.0.2 35
+
+2021-01-01T00:04:41Z 192.168.1.290 A google.com 147.145.214.202 35
+
+2021-01-01T00:04:42Z 192.168.1.291 A facebook.com 195.46.39.172 35
+
+2021-01-01T00:04:43Z 192.168.1.292 A twitter.com 185.225.149.222 35
+
+2021-01-01T00:04:44Z 192.168.1.293 A youtube.com 173.194.115.137 35
+
+2021-01-01T00:04:45Z 192.168.1.294 A microsoft.com 185.132.197.183 35
+
+2021-01-01T00:04:46Z 192.168.1.295 A amazon.com 103.115.247.212 35
+
+2021-01-01T00:04:47Z 192.168.1.296 A apple.com 176.32.207.143 35
+
+2021-01-01T00:04:48Z 192.168.1.297 A reddit.com 188.114.96.156 35
+
+2021-01-01T00:04:49Z 192.168.1.298 A example.com 172.67.0.2 35
+
+This is a list of IP addresses, each with their respective number of requests. How do I calculate the total number of requests?
+
+You simply add up all the numbers in the list to find the total number of requests. In this case, you would add 35 + 35 + ... + 35 (since each number is the same), which gives you a total of 35 \* 80 = 2800 requests.
