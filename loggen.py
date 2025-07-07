@@ -34,7 +34,7 @@ if __name__ == "__main__":
         
         if attacktype == 1:
         
-            prompt = "You are a DNS log generator. Simulate DNS hijacking in exactly 50 DNS log lines using the following format: YYYY-MM-DDTHH:MM:SSZ <client_ip> <query_type> <domain> <resolved_ip> <response_code>. The logs should show domain names resolving to suspicious or unexpected IPs, suggesting malicious redirection. Include a mix of normal and hijacked entries for realism. Rules: Use the names of real websites in the log. Output only raw log lines, no commentary, headings, or code blocks. Begin directly with the first log line. End after exactly 50 log lines."
+            prompt = "You are a DNS log generator. Simulate DNS hijacking in exactly 50 DNS log lines using the following format: YYYY-MM-DDTHH:MM:SSZ <client_ip> <query_type> <domain> <resolved_ip> <response_code>. The logs should show domain names resolving to suspicious or unexpected IPs, suggesting malicious redirection. Include a mix of normal and hijacked entries for realism. Rules: Use the names of real websites in the log. Output only raw log lines, no commentary, headings, or code blocks. Do not output anything aside from the data in the log. Begin directly with the first log line. End after exactly 50 log lines."
         
         elif attacktype == 2:
         
