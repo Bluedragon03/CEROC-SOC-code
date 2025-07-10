@@ -55,23 +55,23 @@ if __name__ == "__main__":
         
         elif attacktype == 2:
         
-            prompt = "Generate exactly 50 lines of DNS server log data that indicate DNS cache poisoning attempts. Include conflicting responses for the same domain, unusually short TTLs, or spoofed responses from non-authoritative servers. Each log line must include a timestamp, client IP, query type, domain name, and the (potentially malicious) resolved IP. Do not include any headers or extra explanation—only raw log lines."
+            prompt = "Forget all previous conversations. You are a DNS log generator. Generate 50 raw DNS log lines that suggest DNS cache poisoning. Use the following format: YYYY-MM-DDTHH:MM:SSZ <client_ip> <query_type> <domain> <resolved_ip> <response_code>. The logs should include conflicting IPs for the same domain within a short time, unusually short TTL behavior (implied), or domains resolving to untrusted or unexpected IPs. Include a mix of normal and suspicious entriesfor realism. Rules: Use the names of real websites in the log. Output only raw log lines, no commentary, headings, or code blocks. Do not output anything aside from the data in the log. Begin directly with the first log line. End after exactly 50 log lines."
         
         elif attacktype == 3:
         
-            prompt = "Generate exactly 50 lines of DNS log data showing signs of a DNS amplification DDoS attack. Include a high volume of similar queries from spoofed IP addresses, often with large query responses (e.g., ANY requests). Each log line should include a timestamp, client IP, query type, domain, and response size. Return only raw log entries with no additional explanation. Do not include any explanation, headers, or comments—only the 50 lines of raw log data."
+            prompt = "Forget all previous conversations. You are a DNS log generator. Create 50 DNS log entries that show signs of a DNS amplification DDoS attack using the following format: YYYY-MM-DDTHH:MM:SSZ <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Simulate high-frequency queries from spoofed IPs, often using ANY or A record types to domains that would yield large responses. Include a mix of normal and suspicious entriesfor realism. Rules: Use the names of real websites in the log. Output only raw log lines, no commentary, headings, or code blocks. Do not output anything aside from the data in the log. Begin directly with the first log line. End after exactly 50 log lines."
         
         elif attacktype == 4:
         
-            prompt = "Generate exactly 50 lines of DNS log entries that suggest DNS tunneling activity. Use long, encoded subdomain names, repetitive queries to specific domains, and unusual query patterns. Each log line should contain a timestamp, client IP, query type, domain name, and response code. Return only raw logs—no summaries or added text."
+            prompt = "Forget all previous conversations. You are a DNS log generator. Generate 50 DNS log lines that reflect DNS tunneling activity using the format: YYYY-MM-DDTHH:MM:SSZ <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Include suspiciously long or encoded-looking subdomains, repetitive client queries, and suspicious target domains. Keep query types mostly as A. Include a mix of normal and suspicious entriesfor realism. Rules: Use the names of real websites in the log. Output only raw log lines, no commentary, headings, or code blocks. Do not output anything aside from the data in the log. Begin directly with the first log line. End after exactly 50 log lines."
         
         elif attacktype == 5:
         
-            prompt = "Generate exactly 50 lines of DNS log entries showing evidence of a fast flux network. The same domain name should resolve to many different IP addresses in rapid succession, often with low TTLs. Include timestamps, client IPs, domain names, resolved IPs, and TTLs. Output only raw log lines—no explanation or formatting beyond the logs."
+            prompt = "You are a DNS log generator. Produce 50 DNS log entries showing signs of a fast flux network using the format: YYYY-MM-DDTHH:MM:SSZ <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Simulate the same domain resolving to many different IPs within short time intervals. Include multiple domains doing this, and use response codes like 200 or 404. Include a mix of normal and suspicious entriesfor realism. Rules: Use the names of real websites in the log. Output only raw log lines, no commentary, headings, or code blocks. Do not output anything aside from the data in the log. Begin directly with the first log line. End after exactly 50 log lines."
         
         elif attacktype == 6:
         
-            prompt = "Generate exactly 50 lines of realistic DNS log entries. Each line should resemble output from a DNS server log, including a timestamp, client IP address, query type, domain name, and response code. Do not include any explanation, headers, or comments—only the 50 lines of raw log data."
+            prompt = "You are a DNS log generator. Generate exactly 50 lines of DNS log entries in the following format, and in this format only: YYYY-MM-DDTHH:MM:SSZ <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Each line must be realistic, use RFC3339 timestamps, and include a mix of A and MX queries, subdomains, and a variety of IPs and response codes (e.g., 200, 404, 502, 505). Rules: Use the names of real websites in the log. Output only raw log lines, no commentary, headings, or code blocks. Do not output anything aside from the data in the log. Begin directly with the first log line. End after exactly 50 log lines."
         
         else:
         
