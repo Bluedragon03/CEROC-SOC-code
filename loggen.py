@@ -1,4 +1,5 @@
 import requests
+import re
 
 
 def chat_with_mistral(prompt):
@@ -25,6 +26,22 @@ def chat_with_mistral(prompt):
 
 
 if __name__ == "__main__":
+
+    pattern = re.compile(
+
+    r"\b\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z"      # Timestamp
+
+    r"\s+\d{1,3}(?:\.\d{1,3}){3}"                  # Client IP
+
+    r"\s+[A-Z]+"                                   # Query type (A, AAAA, MX, etc.)
+
+    r"\s+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"             # Domain
+
+    r"\s+\d{1,3}(?:\.\d{1,3}){3}"                  # Resolved IP
+
+    r"\s+\d{3}\b"                                  # Response code (e.g., 404, 200)
+
+    )
     
     logtype = int(input("Please select a type of log:\n1. DNS\n"))
 
@@ -74,8 +91,10 @@ if __name__ == "__main__":
 
     print("printing reply to outputlog.txt")
 
+    valid_logs = pattern.findall(reply)
+
     with open('outputlog.txt', 'w') as file:
 
-        file.write(reply)
-
-        file.write("\n")
+        for log in valid_logs:
+            file.write(log)
+            file.write("\n")
