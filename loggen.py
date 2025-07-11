@@ -28,18 +28,18 @@ def chat_with_mistral(prompt):
 if __name__ == "__main__":
 
     pattern = re.compile(
+            
+        r"\b\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z"        # Timestamp
 
-    r"\b\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z"      # Timestamp
+        r"\s+\d{1,3}(?:\.\d{1,3}){3}"                    # Client IPv4
 
-    r"\s+\d{1,3}(?:\.\d{1,3}){3}"                  # Client IP
+        r"\s+(A|ANY|AAAA|CNAME|MX|NS|PTR|SOA|TXT)"       # Query type (flexible)
 
-    r"\s+[A-Z]+"                                   # Query type (A, AAAA, MX, etc.)
+        r"\s+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"               # Domain
 
-    r"\s+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"             # Domain
+        r"\s+(?:\d{1,3}(?:\.\d{1,3}){3}|[0-9a-fA-F:]+)"  # Resolved IP (IPv4 or IPv6)
 
-    r"\s+\d{1,3}(?:\.\d{1,3}){3}"                  # Resolved IP
-
-    r"\s+\d{3}\b"                                  # Response code (e.g., 404, 200)
+        r"\s+\d+\b"                                      # Response code or port
 
     )
     
@@ -59,7 +59,7 @@ if __name__ == "__main__":
         
         elif attacktype == 3:
         
-            prompt = "Forget all previous conversations. You are a DNS log generator. Create 50 DNS log entries that show signs of a DNS amplification DDoS attack using the following format: YYYY-MM-DDTHH:MM:SSZ <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Simulate high-frequency queries from spoofed IPs, often using ANY or A record types to domains that would yield large responses. Include a mix of normal and suspicious entriesfor realism. Rules: Use the names of real websites in the log. Output only raw log lines, no commentary, headings, or code blocks. Do not output anything aside from the data in the log. Begin directly with the first log line. End after exactly 50 log lines."
+            prompt = "Forget all previous conversations. You are a DNS log generator. Create 50 DNS log entries that show signs of a DNS amplification DDoS attack using the following format: YYYY-MM-DDTHH:MM:SSZ <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Simulate high-frequency queries from spoofed IPs, often using ANY or A record types to domains that would yield large responses. Use the names of real websites for realism. Format rules: No extra text or wrapping—just 50 raw logs in the exact structure shown. Begin with the first log line, stop after the 50th."
         
         elif attacktype == 4:
         
@@ -93,10 +93,12 @@ if __name__ == "__main__":
 
     valid_logs = pattern.findall(reply)
 
+    full_matches = [m.group(0) for m in pattern.finditer(reply)]
+
     print(reply)
 
     with open('outputlog.txt', 'w') as file:
 
-        for log in valid_logs:
+        for log in full_matches:
             file.write(log)
             file.write("\n")
