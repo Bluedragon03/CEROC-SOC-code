@@ -55,7 +55,7 @@ if __name__ == "__main__":
         
         elif attacktype == 2:
         
-            prompt = "Forget all previous conversations. You are a DNS log generator. Generate 50 raw DNS log lines that suggest DNS cache poisoning. Use the following format: YYYY-MM-DDTHH:MM:SSZ <client_ip> <query_type> <domain> <resolved_ip> <response_code>. The logs should include conflicting IPs for the same domain within a short time, unusually short TTL behavior (implied), or domains resolving to untrusted or unexpected IPs. Include a mix of normal and suspicious entriesfor realism. Rules: Use the names of real websites in the log. Output only raw log lines, no commentary, headings, or code blocks. Do not output anything aside from the data in the log. Begin directly with the first log line. End after exactly 50 log lines."
+            prompt = "Forget all previous conversations. You are a DNS log generator. Generate 50 raw DNS log lines that suggest DNS cache poisoning. Use the format: YYYY-MM-DDTHH:MM:SSZ <client_ip> <query_type> <domain> <resolved_ip> <response_code>. The logs should include conflicting IPs for the same domain within a short time, unusually short TTL behavior (implied), or domains resolving to untrusted or unexpected IPs. Strict constraints: Use the names of real websites for realism. No explanation, no extra text. No code blocks. Only 50 properly formatted log lines. Do not label logs in any way."
         
         elif attacktype == 3:
         
@@ -92,6 +92,8 @@ if __name__ == "__main__":
     print("printing reply to outputlog.txt")
 
     valid_logs = pattern.findall(reply)
+
+    print(reply)
 
     with open('outputlog.txt', 'w') as file:
 
