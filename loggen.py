@@ -63,7 +63,7 @@ if __name__ == "__main__":
         
         elif attacktype == 4:
         
-            prompt = "Forget all previous conversations. You are a DNS log generator. Generate 50 DNS log lines that reflect DNS tunneling activity using the format: YYYY-MM-DDTHH:MM:SSZ <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Include suspiciously long or encoded-looking subdomains, repetitive client queries, and suspicious target domains. Keep query types mostly as A. Include a mix of normal and suspicious entriesfor realism. Rules: Use the names of real websites in the log. Output only raw log lines, no commentary, headings, or code blocks. Do not output anything aside from the data in the log. Begin directly with the first log line. End after exactly 50 log lines."
+            prompt = "Forget all previous conversations. You are a DNS log generator. Generate 50 DNS log lines that reflect DNS tunneling activity using the format: YYYY-MM-DDTHH:MM:SSZ <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Include suspiciously long or encoded-looking subdomains, repetitive client queries, and suspicious target domains. Keep query types mostly as A. Use the names of real websites for realism and make the URLs look realistic. Strict rules: Output only the 50 raw lines. No explanations, formatting, or extra lines. Start immediately and stop at exactly 50."
         
         elif attacktype == 5:
         
@@ -91,7 +91,7 @@ if __name__ == "__main__":
 
     print("printing reply to outputlog.txt")
 
-    valid_logs = pattern.findall(reply)
+    #valid_logs = pattern.findall(reply)
 
     full_matches = [m.group(0) for m in pattern.finditer(reply)]
 
