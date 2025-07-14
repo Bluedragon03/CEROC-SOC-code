@@ -71,7 +71,7 @@ if __name__ == "__main__":
         
         elif attacktype == 6:
         
-            prompt = "You are a DNS log generator. Generate exactly 50 lines of DNS log entries in the following format, and in this format only: YYYY-MM-DDTHH:MM:SSZ <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Each line must be realistic, use RFC3339 timestamps, and include a mix of A and MX queries, subdomains, and a variety of IPs and response codes (e.g., 200, 404, 502, 505). Rules: Use the names of real websites in the log. Output only raw log lines, no commentary, headings, or code blocks. Do not output anything aside from the data in the log. Begin directly with the first log line. End after exactly 50 log lines."
+            prompt = "Forget all previous conversations. You are a DNS log generator. Generate exactly 50 lines of DNS log entries in the following format, and in this format only: YYYY-MM-DDTHH:MM:SSZ <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Each line must be realistic, use RFC3339 timestamps, and include a mix of A and MX queries, subdomains, and a variety of IPs and response codes (e.g., 200, 404, 502, 505). Use the names of real websites for realism. Even for MX queries, the <resolved_ip> field must be an IPv4 address, not a domain name. Assume the MX hostname has already been resolved. Important rules: Output only raw log lines, with no commentary, explanations, or headings. Do not wrap logs in code blocks. Start immediately with the first log line. Stop after exactly 50 log lines. Do not use example.com, example.net or other similar urls."
         
         else:
         
