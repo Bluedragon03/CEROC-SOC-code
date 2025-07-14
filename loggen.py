@@ -67,7 +67,7 @@ if __name__ == "__main__":
         
         elif attacktype == 5:
         
-            prompt = "You are a DNS log generator. Produce 50 DNS log entries showing signs of a fast flux network using the format: YYYY-MM-DDTHH:MM:SSZ <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Simulate the same domain resolving to many different IPs within short time intervals. Include multiple domains doing this, and use response codes like 200 or 404. Include a mix of normal and suspicious entriesfor realism. Rules: Use the names of real websites in the log. Output only raw log lines, no commentary, headings, or code blocks. Do not output anything aside from the data in the log. Begin directly with the first log line. End after exactly 50 log lines."
+            prompt = "Forget all previous conversations. You are a DNS log generator. Produce 50 DNS log entries showing signs of a fast flux network using the format: YYYY-MM-DDTHH:MM:SSZ <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Simulate the same domain resolving to many different IPs within short time intervals. Include multiple domains doing this, use response codes like 200 or 404, and use the names of real websites for realism. Output rules: Only raw DNS log lines in the exact format. No commentary or formatting. Limit output to exactly 50 lines. Do not use example.com, example.net, or any url like that."
         
         elif attacktype == 6:
         
