@@ -1,5 +1,6 @@
 import requests
 import re
+from datetime import datetime, timedelta
 
 
 def chat_with_mistral(prompt):
@@ -25,6 +26,14 @@ def chat_with_mistral(prompt):
     return result['response']
 
 def DNS_log():
+
+    line_count = 0
+
+    attack_start = 0
+
+    max_line_count = 100
+
+    timestamp = "2025-10-01T12:00:01Z"
 
     pattern = re.compile(
 
@@ -89,6 +98,10 @@ def DNS_log():
             file.write("\n")
 
 if __name__ == "__main__":
+
+    with open('outputlog.txt', 'w'):
+        
+        pass
     
     logtype = int(input("Please select a type of log:\n1. DNS\n"))
 
