@@ -1,5 +1,6 @@
 import requests
 import re
+import random
 from datetime import datetime, timedelta
 
 
@@ -35,9 +36,13 @@ def DNS_log():
 
     timestamp = "2025-10-01T12:00:01Z"
 
+    def_prompt = "Forget all previous conversations. You are a DNS log generator. Generate exactly 1 line of a DNS log in the following format, and in this format only: <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Do not include a timestamp. The line must be realistic, use the name of a real website, and can include A or MX queries, and a variety of IPs and response codes (e.g., 200, 404, 502, 505). Important rules: Output only raw log lines, with no commentary, explanations, or headings. Do not wrap logs in code blocks. Only generate a single line. Do not use any example domains (domains that include the word 'example' in any way). Do not use search engines, like google or yahoo, as domains."
+
+    prompt = "No attack"
+
     pattern = re.compile(
 
-        r"\b\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z"        # Timestamp
+        r"(?:^)?"
 
         r"\s+\d{1,3}(?:\.\d{1,3}){3}"                    # Client IPv4
 
@@ -75,7 +80,7 @@ def DNS_log():
 
     elif attacktype == 6:
 
-        prompt = "Forget all previous conversations. You are a DNS log generator. Generate exactly 50 lines of DNS log entries in the following format, and in this format only: YYYY-MM-DDTHH:MM:SSZ <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Each line must be realistic, use RFC3339 timestamps, and include a mix of A and MX queries, subdomains, and a variety of IPs and response codes (e.g., 200, 404, 502, 505). Use the names of real websites for realism. Even for MX queries, the <resolved_ip> field must be an IPv4 address, not a domain name. Assume the MX hostname has already been resolved. Important rules: Output only raw log lines, with no commentary, explanations, or headings. Do not wrap logs in code blocks. Start immediately with the first log line. Stop after exactly 50 log lines. Do not use example.com, example.net or other similar urls."
+        prompt = "No attack"
 
     else:
 
@@ -85,17 +90,70 @@ def DNS_log():
 
     print("getting response from mistral")
 
-    reply = chat_with_mistral(prompt)
+    attack_start = random.randint(1, max_line_count - 25)
+    
+    while line_count < max_line_count:
+
+        if line_count == attack_start and prompt != "No attack":
+
+            reply = chat_with_mistral(prompt)
+
+            full_matches = [m.group(0) for m in pattern.finditer(reply)]
+
+            for log in full_matches:
+
+                dt = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%SZ")
+
+                dt += timedelta(seconds=1)
+
+                timestamp_str = dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+
+                new_log = log.lstrip('\n')
+
+                new_log = new_log.lstrip(' ')
+
+                with open('outputlog.txt', 'a') as file:
+                    file.write(timestamp)
+                    file.write(" ")
+                    file.write(new_log)
+                    file.write("\n")
+
+                line_count = line_count + 1
+
+        else:
+            reply = chat_with_mistral(def_prompt)
+
+            full_matches = [m.group(0) for m in pattern.finditer(reply)]
+
+            dt = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%SZ")
+
+            dt += timedelta(seconds=1)
+
+            timestamp = dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+
+            log_str = full_matches[0].lstrip(' ')
+
+            log_str = log_str.lstrip('\n')
+
+            with open('outputlog.txt', 'a') as file:
+                file.write(timestamp)
+                file.write(" ")
+                file.write(log_str)
+                file.write("\n")
+
+            line_count = line_count + 1
+
+    #reply = chat_with_mistral(prompt)
 
     print("printing reply to outputlog.txt")
 
-    full_matches = [m.group(0) for m in pattern.finditer(reply)]
+    #full_matches = [m.group(0) for m in pattern.finditer(reply)]
 
-    with open('outputlog.txt', 'w') as file:
+    #with open('outputlog.txt', 'w') as file:
 
-        for log in full_matches:
-            file.write(log)
-            file.write("\n")
+    #    for log in full_matches:
+    #        file.write(log)
+    #        file.write("\n")
 
 if __name__ == "__main__":
 
