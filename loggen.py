@@ -3,6 +3,33 @@ import re
 import random
 from datetime import datetime, timedelta
 
+domain_ip_map = {}
+
+def generate_ip():
+
+    return ".".join(str(random.randint(1, 254)) for _ in range(4))
+
+def process_line(line):
+
+    parts = line.strip().split()
+
+    if len(parts) != 5:
+
+        return line
+
+    client_ip, query_type, domain, _, response_code = parts
+
+    if domain in domain_ip_map:
+
+        resolved_ip = domain_ip_map[domain]
+
+    else:
+
+        resolved_ip = generate_ip()
+
+        domain_ip_map[domain] = resolved_ip
+
+    return f"{client_ip} {query_type} {domain} {resolved_ip} {response_code}"
 
 def chat_with_mistral(prompt):
 
@@ -135,6 +162,8 @@ def DNS_log():
 
             log_str = log_str.lstrip('\n')
 
+            log_str = process_line(log_str)
+
             with open('outputlog.txt', 'a') as file:
                 file.write(timestamp)
                 file.write(" ")
@@ -143,17 +172,7 @@ def DNS_log():
 
             line_count = line_count + 1
 
-    #reply = chat_with_mistral(prompt)
-
     print("printing reply to outputlog.txt")
-
-    #full_matches = [m.group(0) for m in pattern.finditer(reply)]
-
-    #with open('outputlog.txt', 'w') as file:
-
-    #    for log in full_matches:
-    #        file.write(log)
-    #        file.write("\n")
 
 if __name__ == "__main__":
 
