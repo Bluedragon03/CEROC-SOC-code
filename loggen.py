@@ -61,9 +61,9 @@ def DNS_log():
 
     max_line_count = 100
 
-    timestamp = "2025-10-01T12:00:01Z"
+    timestamp = "2025-10-01T12:00:00Z"
 
-    def_prompt = "Forget all previous conversations. You are a DNS log generator. Generate exactly 1 line of a DNS log in the following format, and in this format only: <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Do not include a timestamp. The line must be realistic, use the name of a real website, and can include A or MX queries, and a variety of IPs and response codes (e.g., 200, 404, 502, 505). Important rules: Output only raw log lines, with no commentary, explanations, or headings. Do not wrap logs in code blocks. Only generate a single line. Do not use any example domains (domains that include the word 'example' in any way). Do not use search engines, like google or yahoo, as domains."
+    def_prompt = "Forget all previous conversations. You are a DNS log generator. Generate exactly 1 line of a DNS log in the following format, and in this format only: <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Do not include a timestamp. The line must be realistic, use the name of a real website, and can include A or MX queries, and a variety of IPs and response codes (e.g., 200, 404, 502, 505). Important rules: Output only raw log lines, with no commentary, explanations, or headings. Do not wrap logs in code blocks. Only generate a single line. Do not use any example domains (domains that include the word 'example' in any way). Do not use search engines, like google or yahoo, or anything containing the word example as domains."
 
     prompt = "No attack"
 
@@ -152,25 +152,30 @@ def DNS_log():
 
             full_matches = [m.group(0) for m in pattern.finditer(reply)]
 
-            dt = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%SZ")
+            try:
 
-            dt += timedelta(seconds=1)
+                dt = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%SZ")
 
-            timestamp = dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+                dt += timedelta(seconds=1)
 
-            log_str = full_matches[0].lstrip(' ')
+                timestamp = dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+            
+                log_str = full_matches[0].lstrip(' ')
 
-            log_str = log_str.lstrip('\n')
+                log_str = log_str.lstrip('\n')
 
-            log_str = process_line(log_str)
+                log_str = process_line(log_str)
 
-            with open('outputlog.txt', 'a') as file:
-                file.write(timestamp)
-                file.write(" ")
-                file.write(log_str)
-                file.write("\n")
+                with open('outputlog.txt', 'a') as file:
+                    file.write(timestamp)
+                    file.write(" ")
+                    file.write(log_str)
+                    file.write("\n")
 
-            line_count = line_count + 1
+                line_count = line_count + 1
+
+            except:
+                dt -= timedelta(seconds=1)
 
     print("printing reply to outputlog.txt")
 
