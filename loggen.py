@@ -3,7 +3,20 @@ import re
 import random
 from datetime import datetime, timedelta
 
-domain_ip_map = {}
+domain_ip_map = {
+        "google.com": "8.8.8.8",
+        "zoom.us": "170.114.52.2",
+        "teams.microsoft.com": "52.123.129.14",
+        "outlook.com": "52.101.40.1",
+        "gmail.com": "74.125.136.18",
+        "linkedin.com": "150.171.22.12",
+        "github.com": "140.82.112.3",
+        "stackoverflow.com": "172.64.155.249",
+        "youtube.com": "142.251.15.93",
+        "cnn.com": "151.101.195.5",
+        "nytimes.com": "151.101.1.164",
+        "bbc.com": "151.101.64.81"
+        }
 
 def generate_ip():
 
@@ -63,9 +76,15 @@ def DNS_log():
 
     timestamp = "2025-10-01T12:00:00Z"
 
-    def_prompt = "Forget all previous conversations. You are a DNS log generator. Generate exactly 1 line of a DNS log in the following format, and in this format only: <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Do not include a timestamp. The line must be realistic, use the name of a real website, and can include A or MX queries, and a variety of IPs and response codes (e.g., 200, 404, 502, 505). Important rules: Output only raw log lines, with no commentary, explanations, or headings. Do not wrap logs in code blocks. Only generate a single line. Do not use any example domains (domains that include the word 'example' in any way). Do not use search engines, like google or yahoo, or anything containing the word example as domains."
+    def_prompt = "Forget all previous conversations. You are a DNS log generator. Generate exactly 1 line of a DNS log in the following format, and in this format only: <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Do not include a timestamp. The line must be realistic, can include A or MX queries, and a variety of response codes (e.g., 200, 404, 502, 505). Important rules: Output only raw log lines, with no commentary, explanations, or headings. Do not wrap logs in code blocks. Only generate a single line."
 
     prompt = "No attack"
+
+    web_list = ["google.com", "zoom.us", "teams.microsoft.com", "outlook.com", "gmail.com", "linkedin.com", "github.com", "stackoverflow.com", "youtube.com", "cnn.com", "nytimes.com", "bbc.com"]
+
+    web_attack_prompt = "Only use domains from the following list: google.com, zoom.us, teams.microsoft.com, outlook.com, gmail.com, linkedin.com, github.com, stackoverflow.com, youtube.com, cnn.com, nytimes.com, bbc.com"
+
+    web_def_prompt = "Use the following domain in the log line: "
 
     pattern = re.compile(
 
@@ -87,7 +106,7 @@ def DNS_log():
 
     if attacktype == 1:
 
-        prompt = "Forget all previous conversations. You are a DNS log generator. Simulate DNS hijacking in exactly 50 DNS log lines using the following format: YYYY-MM-DDTHH:MM:SSZ <client_ip> <query_type> <domain> <resolved_ip> <response_code>. The logs should show domain names resolving to suspicious or unexpected IPs, suggesting malicious redirection. Include a mix of normal and hijacked entries for realism. Rules: Use the names of real websites in the log. Output only raw log lines, no commentary, headings, or code blocks. Do not output anything aside from the data in the log. Begin directly with the first log line. End after exactly 50 log lines."
+        prompt = "Forget all previous conversations. You are a DNS log generator. Simulate DNS hijacking in exactly 20 DNS log lines using the following format: <client_ip> <query_type> <domain> <resolved_ip> <response_code>. The logs should show domain names resolving to suspicious or unexpected IPs, suggesting malicious redirection. Include a mix of normal and hijacked entries for realism. Rules: Use the names of real websites in the log. Output only raw log lines, no commentary, headings, or code blocks. Do not output anything aside from the data in the log. Begin directly with the first log line. End after exactly 20 log lines."
 
     elif attacktype == 2:
 
@@ -123,7 +142,7 @@ def DNS_log():
 
         if line_count == attack_start and prompt != "No attack":
 
-            reply = chat_with_mistral(prompt)
+            reply = chat_with_mistral(prompt + " " + web_attack_prompt)
 
             full_matches = [m.group(0) for m in pattern.finditer(reply)]
 
@@ -143,12 +162,14 @@ def DNS_log():
                     file.write(timestamp)
                     file.write(" ")
                     file.write(new_log)
+                    file.write(" ")
+                    file.write("malicous")
                     file.write("\n")
 
                 line_count = line_count + 1
 
         else:
-            reply = chat_with_mistral(def_prompt)
+            reply = chat_with_mistral(def_prompt + " " + web_def_prompt + web_list[random.randint(0,11)])
 
             full_matches = [m.group(0) for m in pattern.finditer(reply)]
 
