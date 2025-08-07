@@ -110,7 +110,7 @@ def DNS_log():
 
     elif attacktype == 2:
 
-        prompt = "Forget all previous conversations. You are a DNS log generator. Generate 50 raw DNS log lines that suggest DNS cache poisoning. Use the format: YYYY-MM-DDTHH:MM:SSZ <client_ip> <query_type> <domain> <resolved_ip> <response_code>. The logs should include conflicting IPs for the same domain within a short time, unusually short TTL behavior (implied), or domains resolving to untrusted or unexpected IPs. Strict constraints: Use the names of real websites for realism. No explanation, no extra text. No code blocks. Only 50 properly formatted log lines. Do not label logs in any way."
+        prompt = "Forget all previous conversations. You are a DNS log generator. Generate 20 raw DNS log lines that suggest DNS cache poisoning. Use the format: <client_ip> <query_type> <domain> <resolved_ip> <response_code>. The logs should include conflicting IPs for the same domain within a short time, unusually short TTL behavior (implied), or domains resolving to untrusted or unexpected IPs. Strict constraints: Use the names of real websites for realism. No explanation, no extra text. No code blocks. Only 20 properly formatted log lines. Do not label logs in any way."
 
     elif attacktype == 3:
 
@@ -118,11 +118,11 @@ def DNS_log():
 
     elif attacktype == 4:
 
-        prompt = "Forget all previous conversations. You are a DNS log generator. Generate 50 DNS log lines that reflect DNS tunneling activity using the format: YYYY-MM-DDTHH:MM:SSZ <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Include suspiciously long or encoded-looking subdomains, repetitive client queries, and suspicious target domains. Keep query types mostly as A. Use the names of real websites for realism and make the URLs look realistic. Strict rules: Output only the 50 raw lines. No explanations, formatting, or extra lines. Start immediately and stop at exactly 50."
+        prompt = "Forget all previous conversations. You are a DNS log generator. Generate 20 DNS log lines that reflect DNS tunneling activity using the format: <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Include suspiciously long or encoded-looking subdomains, repetitive client queries, and suspicious target domains. Keep query types mostly as A. Use the names of real websites for realism and make the URLs look realistic. Strict rules: Output only the 20 raw lines. No explanations, formatting, or extra lines. Start immediately and stop at exactly 20."
 
     elif attacktype == 5:
 
-        prompt = "Forget all previous conversations. You are a DNS log generator. Produce 50 DNS log entries showing signs of a fast flux network using the format: YYYY-MM-DDTHH:MM:SSZ <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Simulate the same domain resolving to many different IPs within short time intervals. Include multiple domains doing this, use response codes like 200 or 404, and use the names of real websites for realism. Output rules: Only raw DNS log lines in the exact format. No commentary or formatting. Limit output to exactly 50 lines. Do not use example.com, example.net, or any url like that."
+        prompt = "Forget all previous conversations. You are a DNS log generator. Produce 20 DNS log entries showing signs of a fast flux network using the format: <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Simulate the same domain resolving to many different IPs within short time intervals. Include multiple domains doing this, use response codes like 200 or 404, and use the names of real websites for realism. Output rules: Only raw DNS log lines in the exact format. No commentary or formatting. Limit output to exactly 20 lines. Do not use example.com, example.net, or any url like that."
 
     elif attacktype == 6:
 
@@ -163,7 +163,7 @@ def DNS_log():
                     file.write(" ")
                     file.write(new_log)
                     file.write(" ")
-                    file.write("malicous")
+                    #file.write("malicous")
                     file.write("\n")
 
                 line_count = line_count + 1
