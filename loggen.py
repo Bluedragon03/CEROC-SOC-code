@@ -24,24 +24,29 @@ def generate_ip():
 
 def process_line(line):
 
+    # Splits line into into 5 fields
     parts = line.strip().split()
 
+    # If not split into fields return the line
     if len(parts) != 5:
 
         return line
 
     client_ip, query_type, domain, _, response_code = parts
 
+    # If the domain from the line is in the ip map, replace the current ip with the one from the map
     if domain in domain_ip_map:
 
         resolved_ip = domain_ip_map[domain]
 
+    # If the domain is not in the ip map, generate a new ip and add the domain into the ip map with the new ip
     else:
 
         resolved_ip = generate_ip()
 
         domain_ip_map[domain] = resolved_ip
 
+    # Return the line with the new ip address
     return f"{client_ip} {query_type} {domain} {resolved_ip} {response_code}"
 
 def chat_with_mistral(prompt):
@@ -88,7 +93,7 @@ def DNS_log():
 
     pattern = re.compile(
 
-        r"(?:^)?"
+        r"(?:^)?"                                        # Optional newline or space
 
         r"\s+\d{1,3}(?:\.\d{1,3}){3}"                    # Client IPv4
 
@@ -102,6 +107,7 @@ def DNS_log():
 
     )
 
+    # Get the attack that appears in the log and set the prompt
     attacktype = int(input("Please select an attack:\n1. DNS Hijacking\n2. DNS Cache Poisoning\n3. DDoS\n4. DNS Tunneling\n5. Fast Flux Attack\n6. No Attack\n"))
 
     if attacktype == 1:
@@ -136,44 +142,54 @@ def DNS_log():
 
     print("getting response from mistral")
 
+    # Get the line the attack starts on
     attack_start = random.randint(1, max_line_count - 25)
     
+    # Runs until line_count equals max_line_count
     while line_count < max_line_count:
 
+        # If an attack is selected
         if line_count == attack_start and prompt != "No attack":
 
             if attacktype == 3:
 
+                # Different prompt for DDOS attack
                 reply = chat_with_mistral(prompt + " " + web_def_prompt + web_list[random.randint(0,11)])
             
             else:
                 
                 reply = chat_with_mistral(prompt + " " + web_attack_prompt)
 
+            # Filter the response through regex to make sure it has the correct formatting
             full_matches = [m.group(0) for m in pattern.finditer(reply)]
 
             for log in full_matches:
 
+                # Increment the timestamp by 1 second
                 dt = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%SZ")
 
                 dt += timedelta(seconds=1)
 
                 timestamp_str = dt.strftime("%Y-%m-%dT%H:%M:%SZ")
 
+                # Remove newlines and spaces at the front a back of the response
                 new_log = log.lstrip('\n')
 
                 new_log = new_log.lstrip(' ')
 
                 if attacktype == 3:
 
+                    # Adjust ip addresses if attack is DDOS
                     new_log = process_line(new_log)
 
+                # Print output to outputlog.txt for practice use
                 with open('outputlog.txt', 'a') as file:
                     file.write(timestamp)
                     file.write(" ")
                     file.write(new_log)
                     file.write("\n")
                 
+                # Print output to answeroutputlog.txt for the purpose of checking if the user found the correct attack lines
                 with open('answeroutputlog.txt', 'a') as file:
                     file.write(timestamp)
                     file.write(" ")
@@ -184,25 +200,30 @@ def DNS_log():
 
                 line_count = line_count + 1
 
+        # If no attack is selected
         else:
             reply = chat_with_mistral(def_prompt + " " + web_def_prompt + web_list[random.randint(0,11)])
 
+            # Filter responses through regex
             full_matches = [m.group(0) for m in pattern.finditer(reply)]
 
             try:
 
+                # Increment timestamp by 1 second
                 dt = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%SZ")
 
                 dt += timedelta(seconds=1)
 
                 timestamp = dt.strftime("%Y-%m-%dT%H:%M:%SZ")
             
+                # Take and process the first full match from the response
                 log_str = full_matches[0].lstrip(' ')
 
                 log_str = log_str.lstrip('\n')
 
                 log_str = process_line(log_str)
 
+                # Print output to practice log and answer key log
                 with open('outputlog.txt', 'a') as file:
                     file.write(timestamp)
                     file.write(" ")
@@ -218,12 +239,14 @@ def DNS_log():
                 line_count = line_count + 1
 
             except:
+                # Decrement timestamp by 1 second if no valid log line is generated
                 dt -= timedelta(seconds=1)
 
     print("printing reply to outputlog.txt and an answer key has been printed to answeroutputlog.txt")
 
 if __name__ == "__main__":
 
+    # Clear the contents of outputlog.txt and answeroutputlog.txt
     with open('outputlog.txt', 'w'):
         
         pass
@@ -232,6 +255,7 @@ if __name__ == "__main__":
 
         pass
     
+    # Gets log type
     logtype = int(input("Please select a type of log:\n1. DNS\n"))
 
     if logtype == 1:
