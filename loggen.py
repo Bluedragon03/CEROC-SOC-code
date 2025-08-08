@@ -114,7 +114,7 @@ def DNS_log():
 
     elif attacktype == 3:
 
-        prompt = "Forget all previous conversations. You are a DNS log generator. Create 50 DNS log entries that show signs of a DNS amplification DDoS attack using the following format: YYYY-MM-DDTHH:MM:SSZ <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Simulate high-frequency queries from spoofed IPs, often using ANY or A record types to domains that would yield large responses. Use the names of real websites for realism. Format rules: No extra text or wrapping—just 50 raw logs in the exact structure shown. Begin with the first log line, stop after the 50th."
+        prompt = "Forget all previous conversations. You are a DNS log generator. Create 20 DNS log entries that show signs of a DNS amplification DDoS attack using the following format: <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Simulate high-frequency queries from spoofed IPs, often using ANY or A record types to domains that would yield large responses. Use the names of real websites for realism. Format rules: No extra text or wrapping—just 20 raw logs in the exact structure shown. Begin with the first log line, stop after the 20th."
 
     elif attacktype == 4:
 
@@ -142,7 +142,13 @@ def DNS_log():
 
         if line_count == attack_start and prompt != "No attack":
 
-            reply = chat_with_mistral(prompt + " " + web_attack_prompt)
+            if attacktype == 3:
+
+                reply = chat_with_mistral(prompt + " " + web_def_prompt + web_list[random.randint(0,11)])
+            
+            else:
+                
+                reply = chat_with_mistral(prompt + " " + web_attack_prompt)
 
             full_matches = [m.group(0) for m in pattern.finditer(reply)]
 
@@ -158,12 +164,16 @@ def DNS_log():
 
                 new_log = new_log.lstrip(' ')
 
+                if attacktype == 3:
+
+                    new_log = process_line(new_log)
+
                 with open('outputlog.txt', 'a') as file:
                     file.write(timestamp)
                     file.write(" ")
                     file.write(new_log)
                     file.write(" ")
-                    #file.write("malicous")
+                    file.write("malicous")
                     file.write("\n")
 
                 line_count = line_count + 1
