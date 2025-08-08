@@ -172,8 +172,14 @@ def DNS_log():
                     file.write(timestamp)
                     file.write(" ")
                     file.write(new_log)
+                    file.write("\n")
+                
+                with open('answeroutputlog.txt', 'a') as file:
+                    file.write(timestamp)
                     file.write(" ")
-                    file.write("malicous")
+                    file.write(new_log)
+                    file.write(" ")
+                    file.write("suspicious")
                     file.write("\n")
 
                 line_count = line_count + 1
@@ -203,17 +209,27 @@ def DNS_log():
                     file.write(log_str)
                     file.write("\n")
 
+                with open('answeroutputlog.txt', 'a') as file:
+                    file.write(timestamp)
+                    file.write(" ")
+                    file.write(log_str)
+                    file.write("\n")
+                
                 line_count = line_count + 1
 
             except:
                 dt -= timedelta(seconds=1)
 
-    print("printing reply to outputlog.txt")
+    print("printing reply to outputlog.txt and an answer key has been printed to answeroutputlog.txt")
 
 if __name__ == "__main__":
 
     with open('outputlog.txt', 'w'):
         
+        pass
+    
+    with open('answeroutputlog.txt', 'w'):
+
         pass
     
     logtype = int(input("Please select a type of log:\n1. DNS\n"))
