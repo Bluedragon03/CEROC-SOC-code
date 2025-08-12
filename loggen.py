@@ -75,9 +75,13 @@ def DNS_log():
 
     line_count = 0
 
-    attack_start = 0
+    attack_line_position = []
+
+    attack_lines = []
 
     max_line_count = 100
+
+    DDOS_start = random.randint(0, max_line_count - 20)
 
     timestamp = "2025-10-01T12:00:00Z"
 
@@ -142,58 +146,95 @@ def DNS_log():
 
     print("getting response from mistral")
 
-    # Get the line the attack starts on
-    attack_start = random.randint(1, max_line_count - 25)
+    if attacktype == 3:
+
+        # Different prompt for DDOS attack
+        reply = chat_with_mistral(prompt + " " + web_def_prompt + web_list[random.randint(0,11)])
+
+    else:
+
+        reply = chat_with_mistral(prompt + " " + web_attack_prompt)
+
+    # Filter the response through regex to make sure it has the correct formatting
+    full_matches = [m.group(0) for m in pattern.finditer(reply)]
+
+    # Put the lines into a list
+    for log in full_matches:
+        attack_lines.append(log)
+
+    # Get random positions for attack lines
+    attack_line_position = random.sample(range(max_line_count), len(attack_lines))
     
     # Runs until line_count equals max_line_count
     while line_count < max_line_count:
 
-        # If an attack is selected
-        if line_count == attack_start and prompt != "No attack":
+        # If an attack other than DDOS is selected
+        if line_count in attack_line_position and attacktype != 3:
 
-            if attacktype == 3:
+            # Increment the timestamp by 1 second
+            dt = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%SZ")
 
-                # Different prompt for DDOS attack
-                reply = chat_with_mistral(prompt + " " + web_def_prompt + web_list[random.randint(0,11)])
-            
-            else:
+            dt += timedelta(seconds=1)
+
+            timestamp_str = dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+
+            # Remove newlines and spaces at the front a back of the response
+            new_log = attack_lines[0].lstrip('\n')
+
+            new_log = new_log.lstrip(' ')
+
+            # Remove the added attack line
+            attack_lines.pop(0)
+
+            # Print output to outputlog.txt for practice use
+            with open('outputlog.txt', 'a') as file:
+                file.write(timestamp)
+                file.write(" ")
+                file.write(new_log)
+                file.write("\n")
                 
-                reply = chat_with_mistral(prompt + " " + web_attack_prompt)
+            # Print output to answeroutputlog.txt for the purpose of checking if the user found the correct attack lines
+            with open('answeroutputlog.txt', 'a') as file:
+                file.write(timestamp)
+                file.write(" ")
+                file.write(new_log)
+                file.write(" ")
+                file.write("suspicious")
+                file.write("\n")
 
-            # Filter the response through regex to make sure it has the correct formatting
-            full_matches = [m.group(0) for m in pattern.finditer(reply)]
+            line_count = line_count + 1
 
-            for log in full_matches:
-
+        # If DDOS is selected
+        elif attacktype == 3 and line_count == DDOS_start:
+            
+            for line in attack_lines:
+                
                 # Increment the timestamp by 1 second
                 dt = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%SZ")
-
+                
                 dt += timedelta(seconds=1)
+                
+                timestamp = dt.strftime("%Y-%m-%dT%H:%M:%SZ")
 
-                timestamp_str = dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+                # Process the line
+                new_line = line.lstrip('\n')
 
-                # Remove newlines and spaces at the front a back of the response
-                new_log = log.lstrip('\n')
+                new_line = new_line.lstrip(' ')
 
-                new_log = new_log.lstrip(' ')
-
-                if attacktype == 3:
-
-                    # Adjust ip addresses if attack is DDOS
-                    new_log = process_line(new_log)
+                new_line = process_line(new_line)
 
                 # Print output to outputlog.txt for practice use
                 with open('outputlog.txt', 'a') as file:
                     file.write(timestamp)
                     file.write(" ")
-                    file.write(new_log)
+                    file.write(new_line)
                     file.write("\n")
-                
+
                 # Print output to answeroutputlog.txt for the purpose of checking if the user found the correct attack lines
                 with open('answeroutputlog.txt', 'a') as file:
                     file.write(timestamp)
                     file.write(" ")
-                    file.write(new_log)
+                    file.write(new_line)
                     file.write(" ")
                     file.write("suspicious")
                     file.write("\n")
