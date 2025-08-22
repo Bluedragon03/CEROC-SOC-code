@@ -34,15 +34,55 @@ def chat_with_mistral(prompt):
 
 if __name__ == "__main__":
 
-    prompt = "Generate a DHCP log entry in the following format. Replace <hardware_address> with a realistic MAC address, <ip_address> with realistic IPv4 addresses, and <hostname> with a plausible hostname. Dates should be realistic and consistent across fields. Randomize counts and timestamps to make the log look authentic. Strictly follow the spacing of the format in your response.\n\nFormat:\nLooking for hardware address <hardware_address>\n\n    last request   : <YYYY-MM-DD HH:MM:SS>\n    type           : dhcp\n    gateway        : direct\n    status         : found\n    ip             : <ip_address> (<hostname>)\n\n            server   count      most recent           first          IP address\n            ======  =======  =================  =================  ===============\n\n DISCOVER:    1       <count>  <MM/DD/YY HH:MM:SS>  <MM/DD/YY HH:MM:SS>  <ip_address>\n              2       <count>           <HH:MM:SS>           <HH:MM:SS>  <ip_address>\n\n OFFER:       1       <count>  <MM/DD/YY HH:MM:SS>  <MM/DD/YY HH:MM:SS>  <ip_address>\n              2       <count>           <HH:MM:SS>           <HH:MM:SS>  <ip_address>\n\n REQUEST:     1       <count>  <MM/DD/YY HH:MM:SS>  <MM/DD/YY HH:MM:SS>  <ip_address>\n              2       <count>  <MM/DD/YY HH:MM:SS>           <HH:MM:SS>  <ip_address>\n\n ACK:         1       <count>  <MM/DD/YY HH:MM:SS>  <MM/DD/YY HH:MM:SS>  <ip_address>\n              2       <count>  <MM/DD/YY HH:MM:SS>           <HH:MM:SS>  <ip_address>\n\n RELEASE:     1       <count>  <MM/DD/YY HH:MM:SS>  <MM/DD/YY HH:MM:SS>  <ip_address>"
-    reply = chat_with_mistral(prompt)
+    prompt1 = "Generate the DHCP log header in the following format. Replace <hardware_address> with a realistic MAC address, <ip_address> with a realistic IPv4 address, and <hostname> with a plausible hostname. The date should be realistic.\n\nFormat:\nLooking for hardware address <hardware_address>\n\n    last request   : <YYYY-MM-DD HH:MM:SS>\n    type           : dhcp\n    gateway        : direct\n    status         : found\n    ip             : <ip_address> (<hostname>)"
+    
+    prompt2 = "Generate the DISCOVER section of the DHCP log in the following format. Replace <count> with a number, <ip_address> with realistic IPv4 addresses, and times with realistic values. Strictly replicate the spacing and newlines in the given format. Do not output anything else.\n\nFormat:\n 1       <count>  <MM/DD/YY HH:MM:SS>  <MM/DD/YY HH:MM:SS>  <ip_address>\n              2       <count>           <HH:MM:SS>           <HH:MM:SS>  <ip_address>"
+    
+    prompt3 = "Generate the OFFER section of the DHCP log in the following format. Replace <count> with a number, <ip_address> with realistic IPv4 addresses, and times with realistic values. Strictly replicate the spacing and newlines in the given format. Do not output anything else.\n\nFormat:\n 1       <count>  <MM/DD/YY HH:MM:SS>  <MM/DD/YY HH:MM:SS>  <ip_address>\n              2       <count>           <HH:MM:SS>           <HH:MM:SS>  <ip_address>"
+    
+    prompt4 = "Generate the REQUEST section of the DHCP log in the following format. Replace <count> with a number, <ip_address> with realistic IPv4 addresses, and times with realistic values.\n\nFormat:\n REQUEST:     1       <count>  <MM/DD/YY HH:MM:SS>  <MM/DD/YY HH:MM:SS>  <ip_address>\n              2       <count>  <MM/DD/YY HH:MM:SS>           <HH:MM:SS>  <ip_address>"
+    
+    prompt5 = "Generate the ACK section of the DHCP log in the following format. Replace <count> with a number, <ip_address> with realistic IPv4 addresses, and times with realistic values.\n\nFormat:\n ACK:         1       <count>  <MM/DD/YY HH:MM:SS>  <MM/DD/YY HH:MM:SS>  <ip_address>\n              2       <count>  <MM/DD/YY HH:MM:SS>           <HH:MM:SS>  <ip_address>"
+    
+    prompt6 = "Generate the RELEASE section of the DHCP log in the following format. Replace <count> with a number, <ip_address> with realistic IPv4 addresses, and times with realistic values.\n\nFormat:\n RELEASE:     1       <count>  <MM/DD/YY HH:MM:SS>  <MM/DD/YY HH:MM:SS>  <ip_address>"
 
-    print("Prompt:", prompt)
+    log_string = ""
+    
+    reply = chat_with_mistral(prompt1)
 
-    print("Mistral says:", reply)
+    log_string = log_string + reply
+
+    log_string = log_string + "\n\n             server   count      most recent           first          IP address"
+    log_string = log_string + "\n             ======  =======  =================  =================  ===============  "
+
+    reply = chat_with_mistral(prompt2 + "\nThe previous sections of the log are the following: \n" + log_string)
+
+    log_lines = reply.splitlines()
+
+    log_string = log_string + "\n\n" + "DISCOVER:   "
+
+    line_count = 0
+    
+    for line in log_lines:
+        if line_count > 0:
+            line_list = line.split()
+            new_line = "             " + line_list[0] + "       " + line_list[1] + "                  " + line_list[2] + "             " + line_list[3] + "  " + line_list[4]
+        else:
+            line_list = line.split()
+            new_line = " " + line_list[0] + "       " + line_list[1] + "       " + line_list[2] + " " + line_list[3] + "  " + line_list[4] + " " + line_list[5] + "  " + line_list[6]
+
+        log_string = log_string + new_line + "\n"
+
+        line_count = line_count + 1
+
+    #reply = chat_with_mistral(prompt3 + "\nThe previous sections of the log are the following: \n" + log_string)
+
+    #log_string = log_string + "\n\n" + "OFFER:  " + reply
+
+    print("Mistral says:", log_string)
 
     with open('testoutput.txt', 'w') as file:
-        file.write(reply)
+        file.write(log_string)
         file.write("\n")
 
 
