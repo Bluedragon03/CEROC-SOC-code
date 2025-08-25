@@ -1,5 +1,37 @@
 import requests
 
+def process_output(reply, log_string):
+
+    try:
+
+        print("Processing Output")
+
+        log_lines = reply.splitlines()
+
+        line_count = 0
+
+        for line in log_lines:
+
+            if line_count > 0:
+
+                line_list = line.split()
+
+                new_line = "             " + line_list[0] + "       " + line_list[1] + "                  " + line_list[2] + "             " + line_list[3] + "  " + line_list[4]
+
+            else:
+
+                line_list = line.split()
+
+                new_line = " " + line_list[0] + "       " + line_list[1] + "       " + line_list[2] + " " + line_list[3] + "  " + line_list[4] + " " + line_list[5] + "  " + line_list[6]
+
+            log_string = log_string + new_line + "\n"
+
+            line_count = line_count + 1
+
+    except:
+        print(reply)
+
+    return log_string
 
 
 def chat_with_mistral(prompt):
@@ -38,7 +70,7 @@ if __name__ == "__main__":
     
     prompt2 = "Generate the DISCOVER section of the DHCP log in the following format. Replace <count> with a number, <ip_address> with realistic IPv4 addresses, and times with realistic values. Strictly replicate the spacing and newlines in the given format. Do not output anything else.\n\nFormat:\n 1       <count>  <MM/DD/YY HH:MM:SS>  <MM/DD/YY HH:MM:SS>  <ip_address>\n              2       <count>           <HH:MM:SS>           <HH:MM:SS>  <ip_address>"
     
-    prompt3 = "Generate the OFFER section of the DHCP log in the following format. Replace <count> with a number, <ip_address> with realistic IPv4 addresses, and times with realistic values. Strictly replicate the spacing and newlines in the given format. Do not output anything else.\n\nFormat:\n 1       <count>  <MM/DD/YY HH:MM:SS>  <MM/DD/YY HH:MM:SS>  <ip_address>\n              2       <count>           <HH:MM:SS>           <HH:MM:SS>  <ip_address>"
+    prompt3 = "Generate the OFFER section of the DHCP log in the following format. Replace <count> with a number, <ip_address> with realistic IPv4 addresses, and times with realistic values. Strictly replicate the spacing and newlines in the given format. Do not output anything else. Your response should not include the 'OFFER:' part of the format.\n\nFormat:\n 1       <count>  <MM/DD/YY HH:MM:SS>  <MM/DD/YY HH:MM:SS>  <ip_address>\n              2       <count>           <HH:MM:SS>           <HH:MM:SS>  <ip_address>"
     
     prompt4 = "Generate the REQUEST section of the DHCP log in the following format. Replace <count> with a number, <ip_address> with realistic IPv4 addresses, and times with realistic values.\n\nFormat:\n REQUEST:     1       <count>  <MM/DD/YY HH:MM:SS>  <MM/DD/YY HH:MM:SS>  <ip_address>\n              2       <count>  <MM/DD/YY HH:MM:SS>           <HH:MM:SS>  <ip_address>"
     
@@ -48,6 +80,8 @@ if __name__ == "__main__":
 
     log_string = ""
     
+    print("Generating Header")
+    
     reply = chat_with_mistral(prompt1)
 
     log_string = log_string + reply
@@ -55,29 +89,21 @@ if __name__ == "__main__":
     log_string = log_string + "\n\n             server   count      most recent           first          IP address"
     log_string = log_string + "\n             ======  =======  =================  =================  ===============  "
 
-    reply = chat_with_mistral(prompt2 + "\nThe previous sections of the log are the following: \n" + log_string)
+    print("Generating Discover")
 
-    log_lines = reply.splitlines()
+    reply = chat_with_mistral(prompt2 + "\nThe previous sections of the log are the following: \n" + log_string)
 
     log_string = log_string + "\n\n" + "DISCOVER:   "
 
-    line_count = 0
+    log_string = process_output(reply, log_string)
+
+    print("Generating Offer")
     
-    for line in log_lines:
-        if line_count > 0:
-            line_list = line.split()
-            new_line = "             " + line_list[0] + "       " + line_list[1] + "                  " + line_list[2] + "             " + line_list[3] + "  " + line_list[4]
-        else:
-            line_list = line.split()
-            new_line = " " + line_list[0] + "       " + line_list[1] + "       " + line_list[2] + " " + line_list[3] + "  " + line_list[4] + " " + line_list[5] + "  " + line_list[6]
+    reply = chat_with_mistral(prompt3 + "\nThe previous sections of the log are the following: \n" + log_string)
 
-        log_string = log_string + new_line + "\n"
+    log_string = log_string + "\n\n" + "OFFER:     "
 
-        line_count = line_count + 1
-
-    #reply = chat_with_mistral(prompt3 + "\nThe previous sections of the log are the following: \n" + log_string)
-
-    #log_string = log_string + "\n\n" + "OFFER:  " + reply
+    log_string = process_output(reply, log_string)
 
     print("Mistral says:", log_string)
 
