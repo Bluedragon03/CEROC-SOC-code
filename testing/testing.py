@@ -16,17 +16,32 @@ def process_output(reply, log_string):
 
                 line_list = line.split()
 
-                new_line = "             " + line_list[0] + "       " + line_list[1] + "                  " + line_list[2] + "             " + line_list[3] + "  " + line_list[4]
+                if len(line_list) > 1 and len(line_list) != 6:
+
+                    new_line = "             " + line_list[0] + "       " + line_list[1] + "                  " + line_list[2] + "             " + line_list[3] + "  " + line_list[4]
+                
+                    log_string = log_string + new_line + "\n"
+
+                    line_count = line_count + 1
+                else:
+
+                    new_line = "             " + line_list[0] + "       " + line_list[1] + "                  " + line_list[3] + "             " + line_list[5] + "  " + line_list[6]
+                    
+                    log_string = log_string + new_line + "\n"
+
+                    line_count = line_count + 1
 
             else:
 
                 line_list = line.split()
 
-                new_line = " " + line_list[0] + "       " + line_list[1] + "       " + line_list[2] + " " + line_list[3] + "  " + line_list[4] + " " + line_list[5] + "  " + line_list[6]
+                if len(line_list) > 1:
 
-            log_string = log_string + new_line + "\n"
+                    new_line = " " + line_list[0] + "       " + line_list[1] + "       " + line_list[2] + " " + line_list[3] + "  " + line_list[4] + " " + line_list[5] + "  " + line_list[6]
 
-            line_count = line_count + 1
+                    log_string = log_string + new_line + "\n"
+
+                    line_count = line_count + 1
 
     except:
         print(reply)
@@ -101,7 +116,7 @@ if __name__ == "__main__":
     
     reply = chat_with_mistral(prompt3 + "\nThe previous sections of the log are the following: \n" + log_string)
 
-    log_string = log_string + "\n\n" + "OFFER:     "
+    log_string = log_string + "\n\n" + "OFFER:      "
 
     log_string = process_output(reply, log_string)
 

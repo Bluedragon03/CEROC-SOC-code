@@ -1,16 +1,17 @@
- Looking for hardware address 00:11:22:33:44:55
+ Looking for hardware address 00:1B:3C:9A:6D:2E
 
-    last request   : 2022-03-08 10:15:26
+    last request   : 2022-05-04 12:30:15
     type           : dhcp
     gateway        : direct
     status         : found
-    ip             : 192.168.1.100 (my-pc)
+    ip             : 192.168.1.100 (my-desktop-pc)
 
              server   count      most recent           first          IP address
              ======  =======  =================  =================  ===============  
 
-DISCOVER:    3       1       2022-03-08 10:15:30  2022-03-08 10:15:32  192.168.1.101
-             4       2                  10:15:32             10:15:30  192.168.1.101
+DISCOVER:    3       1       2022-05-04 12:30:16  2022-05-04 12:30:17  192.168.1.101
+             server       count                  most             recent  first
 
 
-OFFER:     
+OFFER:       1       1       2022-05-04 12:30:17  2022-05-04 12:30:18  192.168.1.102
+
