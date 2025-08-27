@@ -16,14 +16,14 @@ def process_output(reply, log_string):
 
                 line_list = line.split()
 
-                if len(line_list) > 1 and len(line_list) != 6:
+                if len(line_list) > 1 and len(line_list) != 6 and line_list[0].isdigit():
 
                     new_line = "             " + line_list[0] + "       " + line_list[1] + "                  " + line_list[2] + "             " + line_list[3] + "  " + line_list[4]
                 
                     log_string = log_string + new_line + "\n"
 
                     line_count = line_count + 1
-                else:
+                elif len(line_list) == 6 and line_list[0].isdigit():
 
                     new_line = "             " + line_list[0] + "       " + line_list[1] + "                  " + line_list[3] + "             " + line_list[5] + "  " + line_list[6]
                     
