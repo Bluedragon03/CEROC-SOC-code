@@ -16,14 +16,14 @@ def process_output(reply, log_string):
 
                 line_list = line.split()
 
-                if len(line_list) > 1 and len(line_list) != 6 and line_list[0].isdigit():
+                if len(line_list) > 1 and len(line_list) != 6 and line_list[0][0].isdigit():
 
                     new_line = "             " + line_list[0] + "       " + line_list[1] + "                  " + line_list[2] + "             " + line_list[3] + "  " + line_list[4]
                 
                     log_string = log_string + new_line + "\n"
 
                     line_count = line_count + 1
-                elif len(line_list) == 6 and line_list[0].isdigit():
+                elif len(line_list) == 6 and line_list[0][0].isdigit():
 
                     new_line = "             " + line_list[0] + "       " + line_list[1] + "                  " + line_list[3] + "             " + line_list[5] + "  " + line_list[6]
                     
@@ -87,7 +87,7 @@ if __name__ == "__main__":
     
     prompt3 = "Generate the OFFER section of the DHCP log in the following format. Replace <count> with a number, <ip_address> with realistic IPv4 addresses, and times with realistic values. Strictly replicate the spacing and newlines in the given format. Do not output anything else. Your response should not include the 'OFFER:' part of the format.\n\nFormat:\n 1       <count>  <MM/DD/YY HH:MM:SS>  <MM/DD/YY HH:MM:SS>  <ip_address>\n              2       <count>           <HH:MM:SS>           <HH:MM:SS>  <ip_address>"
     
-    prompt4 = "Generate the REQUEST section of the DHCP log in the following format. Replace <count> with a number, <ip_address> with realistic IPv4 addresses, and times with realistic values.\n\nFormat:\n REQUEST:     1       <count>  <MM/DD/YY HH:MM:SS>  <MM/DD/YY HH:MM:SS>  <ip_address>\n              2       <count>  <MM/DD/YY HH:MM:SS>           <HH:MM:SS>  <ip_address>"
+    prompt4 = "Generate the REQUEST section of the DHCP log in the following format. Replace <count> with a number, <ip_address> with realistic IPv4 addresses, and times with realistic values. Strictly replicate the spacing and newlines in the given format. Do not output anything else.\n\nFormat:\n 1       <count>  <MM/DD/YY HH:MM:SS>  <MM/DD/YY HH:MM:SS>  <ip_address>\n              2       <count>  <MM/DD/YY HH:MM:SS>           <HH:MM:SS>  <ip_address>"
     
     prompt5 = "Generate the ACK section of the DHCP log in the following format. Replace <count> with a number, <ip_address> with realistic IPv4 addresses, and times with realistic values.\n\nFormat:\n ACK:         1       <count>  <MM/DD/YY HH:MM:SS>  <MM/DD/YY HH:MM:SS>  <ip_address>\n              2       <count>  <MM/DD/YY HH:MM:SS>           <HH:MM:SS>  <ip_address>"
     
@@ -117,6 +117,14 @@ if __name__ == "__main__":
     reply = chat_with_mistral(prompt3 + "\nThe previous sections of the log are the following: \n" + log_string)
 
     log_string = log_string + "\n\n" + "OFFER:      "
+
+    log_string = process_output(reply, log_string)
+
+    print("Generating Request")
+
+    reply = chat_with_mistral(prompt4 + "\nThe previous sections of the log are the following: \n" + log_string)
+
+    log_string = log_string + "\n\n" + "REQUEST:   "
 
     log_string = process_output(reply, log_string)
 
