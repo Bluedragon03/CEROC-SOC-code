@@ -1,35 +1,15 @@
-```
-$TTL 86400
-@	IN SOA ns1.example.com. admin.example.com. (
-	2017092701 ; serial
-	3h ; refresh
-	15m ; retry
-	1w ; expire
-	3h ) ; negative cache TTL
-;
-@	IN NS ns1.example.com.
-@	IN A 192.0.2.1
-ns1	IN A 192.0.2.1
-www	IN CNAME @
-mail	IN A 192.0.2.25
-ftp	IN CNAME www
 
-$ORIGIN example.com.
-@	IN MX 10 mail.example.com.
-@	IN TXT "v=spf1 a mx ip4:192.0.2.1 include:_spf.example.com ~all"
-
-$TTL 86400
-@	IN SOA ns1.example.com. admin.example.com. (
-	2017092701 ; serial
-	3h ; refresh
-	15m ; retry
-	1w ; expire
-	3h ) ; negative cache TTL
-;
-@	IN NS ns1.example.com.
-@	IN A 192.0.2.1
-ns1	IN A 192.0.2.1
-www	IN CNAME @
-mail	IN A 192.0.2.25
-ftp	IN CNAME www
+Here is a sample DNS log file with 10 lines:
 ```
+2022-01-01T00:00:00Z,www.example.com,A,8.8.8.8
+2022-01-01T00:00:05Z,www.example.com,A,8.8.4.4
+2022-01-01T00:00:10Z,www.example.net,A,8.8.8.8
+2022-01-01T00:00:15Z,www.example.net,A,8.8.4.4
+2022-01-01T00:00:20Z,www.example.com,NS,ns1.example.com
+2022-01-01T00:00:25Z,www.example.com,NS,ns2.example.com
+2022-01-01T00:00:30Z,www.example.net,NS,ns1.example.net
+2022-01-01T00:00:35Z,www.example.net,NS,ns2.example.net
+2022-01-01T00:00:40Z,mail.example.com,MX,mx.example.com
+2022-01-01T00:00:45Z,www.example.com,SOA,ns1.example.com
+```
+This log file contains 10 lines of DNS data, each line representing a single DNS query. The first field in each line is the date and time of the query, followed by the domain name (in this case "www.example.com" or "www.example.net"), the type of query (A, NS, MX, etc.), and the data for the query (the IP address or hostname depending on the type).

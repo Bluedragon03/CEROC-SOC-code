@@ -1,51 +1,16 @@
 import requests
 
 def process_output(reply, log_string):
-
-    try:
-
-        print("Processing Output")
-
-        log_lines = reply.splitlines()
-
-        line_count = 0
-
-        for line in log_lines:
-
-            if line_count > 0:
-
-                line_list = line.split()
-
-                if len(line_list) > 1 and len(line_list) != 6 and line_list[0][0].isdigit():
-
-                    new_line = "             " + line_list[0] + "       " + line_list[1] + "                  " + line_list[2] + "             " + line_list[3] + "  " + line_list[4]
-                
-                    log_string = log_string + new_line + "\n"
-
-                    line_count = line_count + 1
-                elif len(line_list) == 6 and line_list[0][0].isdigit():
-
-                    new_line = "             " + line_list[0] + "       " + line_list[1] + "                  " + line_list[3] + "             " + line_list[5] + "  " + line_list[6]
-                    
-                    log_string = log_string + new_line + "\n"
-
-                    line_count = line_count + 1
-
-            else:
-
-                line_list = line.split()
-
-                if len(line_list) > 1:
-
-                    new_line = " " + line_list[0] + "       " + line_list[1] + "       " + line_list[2] + " " + line_list[3] + "  " + line_list[4] + " " + line_list[5] + "  " + line_list[6]
-
-                    log_string = log_string + new_line + "\n"
-
-                    line_count = line_count + 1
-
-    except:
-        print(reply)
-
+    # Split the AI reply into lines
+    lines = reply.strip().splitlines()
+    
+    for line in lines:
+        parts = line.split()
+        # Ensure we have exactly 7 parts (ID, Count, Date1, Time1, Date2, Time2, IP)
+        if len(parts) == 7:
+            # Re-format with clean tab-like spacing
+            formatted = f"{parts[0]:>14} {parts[1]:>7}   {parts[2]} {parts[3]}   {parts[4]} {parts[5]}   {parts[6]}"
+            log_string += formatted + "\n"
     return log_string
 
 
@@ -81,17 +46,17 @@ def chat_with_mistral(prompt):
 
 if __name__ == "__main__":
 
-    prompt1 = "Generate the DHCP log header in the following format. Replace <hardware_address> with a realistic MAC address, <ip_address> with a realistic IPv4 address, and <hostname> with a plausible hostname. The date should be realistic.\n\nFormat:\nLooking for hardware address <hardware_address>\n\n    last request   : <YYYY-MM-DD HH:MM:SS>\n    type           : dhcp\n    gateway        : direct\n    status         : found\n    ip             : <ip_address> (<hostname>)"
+    prompt1 = "Role: You are a DHCP log generator. Task: Generate a DHCP log header. Values: Use MAC 00:11:22:33:44:55, IP 192.168.1.100, Hostname workstation-01, and a realistic recent date. Constraint: Output only the text below. No conversational filler.\n\nFormat: Looking for hardware address <hardware_address>\n\nlast request   : <YYYY-MM-DD HH:MM:SS>\ntype           : dhcp\ngateway        : direct\nstatus         : found\nip             : <ip_address> (<hostname>)"
     
-    prompt2 = "Generate the DISCOVER section of the DHCP log in the following format. Replace <count> with a number, <ip_address> with realistic IPv4 addresses, and times with realistic values. Strictly replicate the spacing and newlines in the given format. Do not output anything else.\n\nFormat:\n 1       <count>  <MM/DD/YY HH:MM:SS>  <MM/DD/YY HH:MM:SS>  <ip_address>\n              2       <count>           <HH:MM:SS>           <HH:MM:SS>  <ip_address>"
+    prompt2 = "Role: You are a DHCP log generator. Task: Generate the DISCOVER section. Requirements:\n\nUse exactly 7 columns: [ID] [Count] [Start_Date] [Start_Time] [End_Date] [End_Time] [IP].\n\nUse YYYY-MM-DD for dates and HH:MM:SS for times.\n\nCrucial: Do not include labels like 'DISCOVER:' or any headers.\n\nDo not include markdown code blocks or conversational text.\n\nFormat Template: 1 1 2026-01-29 12:00:01 2026-01-29 12:00:05 192.168.1.101 2 1 2026-01-29 12:00:02 2026-01-29 12:00:06 192.168.1.102"
     
-    prompt3 = "Generate the OFFER section of the DHCP log in the following format. Replace <count> with a number, <ip_address> with realistic IPv4 addresses, and times with realistic values. Strictly replicate the spacing and newlines in the given format. Do not output anything else. Your response should not include the 'OFFER:' part of the format.\n\nFormat:\n 1       <count>  <MM/DD/YY HH:MM:SS>  <MM/DD/YY HH:MM:SS>  <ip_address>\n              2       <count>           <HH:MM:SS>           <HH:MM:SS>  <ip_address>"
+    prompt3 = "Role: You are a DHCP log generator. Task: Generate the OFFER section. Requirements:\n\nUse exactly 7 columns: [ID] [Count] [Start_Date] [Start_Time] [End_Date] [End_Time] [IP].\n\nUse YYYY-MM-DD for dates and HH:MM:SS for times.\n\nCrucial: Do not include labels like 'OFFER:' or any headers.\n\nDo not include markdown code blocks or conversational text.\n\nFormat Template: 1 1 2026-01-29 12:00:01 2026-01-29 12:00:05 192.168.1.101 2 1 2026-01-29 12:00:02 2026-01-29 12:00:06 192.168.1.102"
     
-    prompt4 = "Generate the REQUEST section of the DHCP log in the following format. Replace <count> with a number, <ip_address> with realistic IPv4 addresses, and times with realistic values. Strictly replicate the spacing and newlines in the given format. Do not output anything else.\n\nFormat:\n 1       <count>  <MM/DD/YY HH:MM:SS>  <MM/DD/YY HH:MM:SS>  <ip_address>\n              2       <count>  <MM/DD/YY HH:MM:SS>           <HH:MM:SS>  <ip_address>"
+    prompt4 = "Role: You are a DHCP log generator. Task: Generate the REQUEST section. Requirements:\n\nUse exactly 7 columns: [ID] [Count] [Start_Date] [Start_Time] [End_Date] [End_Time] [IP].\n\nUse YYYY-MM-DD for dates and HH:MM:SS for times.\n\nCrucial: Do not include labels like 'REQUEST:' or any headers.\n\nDo not include markdown code blocks or conversational text.\n\nFormat Template: 1 1 2026-01-29 12:00:01 2026-01-29 12:00:05 192.168.1.101 2 1 2026-01-29 12:00:02 2026-01-29 12:00:06 192.168.1.102"
     
-    prompt5 = "Generate the ACK section of the DHCP log in the following format. Replace <count> with a number, <ip_address> with realistic IPv4 addresses, and times with realistic values.\n\nFormat:\n ACK:         1       <count>  <MM/DD/YY HH:MM:SS>  <MM/DD/YY HH:MM:SS>  <ip_address>\n              2       <count>  <MM/DD/YY HH:MM:SS>           <HH:MM:SS>  <ip_address>"
+    prompt5 = "Role: You are a DHCP log generator. Task: Generate the ACK section. Requirements:\n\nUse exactly 7 columns: [ID] [Count] [Start_Date] [Start_Time] [End_Date] [End_Time] [IP].\n\nUse YYYY-MM-DD for dates and HH:MM:SS for times.\n\nCrucial: Do not include labels like 'ACK:' or any headers.\n\nDo not include markdown code blocks or conversational text.\n\nFormat Template: 1 1 2026-01-29 12:00:01 2026-01-29 12:00:05 192.168.1.101 2 1 2026-01-29 12:00:02 2026-01-29 12:00:06 192.168.1.102"
     
-    prompt6 = "Generate the RELEASE section of the DHCP log in the following format. Replace <count> with a number, <ip_address> with realistic IPv4 addresses, and times with realistic values.\n\nFormat:\n RELEASE:     1       <count>  <MM/DD/YY HH:MM:SS>  <MM/DD/YY HH:MM:SS>  <ip_address>"
+    prompt6 = "Role: You are a DHCP log generator. Task: Generate the RELEASE section. Requirements:\n\nUse exactly 7 columns: [ID] [Count] [Start_Date] [Start_Time] [End_Date] [End_Time] [IP].\n\nUse YYYY-MM-DD for dates and HH:MM:SS for times.\n\nCrucial: Do not include labels like 'RELEASE:' or any headers.\n\nDo not include markdown code blocks or conversational text.\n\nFormat Template: 1 1 2026-01-29 12:00:01 2026-01-29 12:00:05 192.168.1.101 2 1 2026-01-29 12:00:02 2026-01-29 12:00:06 192.168.1.102"
 
     log_string = ""
     
@@ -108,7 +73,7 @@ if __name__ == "__main__":
 
     reply = chat_with_mistral(prompt2 + "\nThe previous sections of the log are the following: \n" + log_string)
 
-    log_string = log_string + "\n\n" + "DISCOVER:   "
+    log_string = log_string + "\n\n" + "DISCOVER:"
 
     log_string = process_output(reply, log_string)
 
@@ -116,7 +81,7 @@ if __name__ == "__main__":
     
     reply = chat_with_mistral(prompt3 + "\nThe previous sections of the log are the following: \n" + log_string)
 
-    log_string = log_string + "\n\n" + "OFFER:      "
+    log_string = log_string + "\n\n" + "OFFER:"
 
     log_string = process_output(reply, log_string)
 
@@ -124,11 +89,27 @@ if __name__ == "__main__":
 
     reply = chat_with_mistral(prompt4 + "\nThe previous sections of the log are the following: \n" + log_string)
 
-    log_string = log_string + "\n\n" + "REQUEST:   "
+    log_string = log_string + "\n\n" + "REQUEST:"
 
     log_string = process_output(reply, log_string)
 
-    print("Mistral says:", log_string)
+    print("Generating Ack")
+
+    reply = chat_with_mistral(prompt5 + "\nThe previous sections of the log are the following: \n" + log_string)
+    
+    log_string = log_string + "\n\n" + "ACK:"
+
+    log_string = process_output(reply, log_string)
+
+    print("Generating Release")
+
+    reply = chat_with_mistral(prompt6 + "\nThe previous sections of the log are the following: \n" + log_string)
+
+    log_string = log_string + "\n\n" + "RELEASE:"
+
+    log_string = process_output(reply, log_string)
+
+    print(log_string)
 
     with open('testoutput.txt', 'w') as file:
         file.write(log_string)
