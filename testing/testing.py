@@ -71,7 +71,7 @@ if __name__ == "__main__":
 
     print("Generating Discover")
 
-    reply = chat_with_mistral(prompt2 + "\nThe previous sections of the log are the following: \n" + log_string)
+    reply = chat_with_mistral(prompt2)# + "\nThe previous sections of the log are the following: \n" + log_string)
 
     log_string = log_string + "\n\n" + "DISCOVER:"
 
@@ -79,7 +79,7 @@ if __name__ == "__main__":
 
     print("Generating Offer")
     
-    reply = chat_with_mistral(prompt3 + "\nThe previous sections of the log are the following: \n" + log_string)
+    reply = chat_with_mistral(prompt3)# + "\nThe previous sections of the log are the following: \n" + log_string)
 
     log_string = log_string + "\n\n" + "OFFER:"
 
@@ -87,7 +87,7 @@ if __name__ == "__main__":
 
     print("Generating Request")
 
-    reply = chat_with_mistral(prompt4 + "\nThe previous sections of the log are the following: \n" + log_string)
+    reply = chat_with_mistral(prompt4)# + "\nThe previous sections of the log are the following: \n" + log_string)
 
     log_string = log_string + "\n\n" + "REQUEST:"
 
@@ -95,7 +95,7 @@ if __name__ == "__main__":
 
     print("Generating Ack")
 
-    reply = chat_with_mistral(prompt5 + "\nThe previous sections of the log are the following: \n" + log_string)
+    reply = chat_with_mistral(prompt5)# + "\nThe previous sections of the log are the following: \n" + log_string)
     
     log_string = log_string + "\n\n" + "ACK:"
 
@@ -103,7 +103,7 @@ if __name__ == "__main__":
 
     print("Generating Release")
 
-    reply = chat_with_mistral(prompt6 + "\nThe previous sections of the log are the following: \n" + log_string)
+    reply = chat_with_mistral(prompt6)# + "\nThe previous sections of the log are the following: \n" + log_string)
 
     log_string = log_string + "\n\n" + "RELEASE:"
 
