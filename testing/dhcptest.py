@@ -113,7 +113,6 @@ if __name__ == "__main__":
 
         exit()
     
-
     session_ip = "192.168.1.105"
 
     log_clock = datetime(2026, 2, 3, 14, 0, 0)
@@ -132,8 +131,6 @@ if __name__ == "__main__":
 
     log_string += "               ====  =======  =====================  =====================  ==============="
 
-
-
     # Define Attack/Normal Sequences
 
     if SIMULATION_MODE == "starvation":
@@ -147,7 +144,6 @@ if __name__ == "__main__":
         sequence = [("DISCOVER", 1), ("OFFER", 1), ("REQUEST", 1), ("ACK", 1)]
         prompt_extra = f"Output ONLY the IP address: {session_ip}. Do not provide any other IPs."
 
-
     for name, rows in sequence:
 
         is_atk = (SIMULATION_MODE == "starvation" and name == "DISCOVER") or (SIMULATION_MODE == "spoofing" and name == "OFFER")
@@ -156,12 +152,8 @@ if __name__ == "__main__":
 
         reply = chat_with_mistral(prompt)
 
-        
-
         log_string, global_id, log_clock = process_output(reply, log_string, f"{name}:", global_id, log_clock, is_atk)
 
         log_clock += timedelta(milliseconds=200)
-
-
 
     print(log_string)
