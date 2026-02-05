@@ -180,7 +180,7 @@ def DHCP_log():
 
         log_clock += timedelta(milliseconds=200)
 
-    print(log_string)
+    print("output printed to outputlog.txt")
 
     with open('outputlog.txt', 'a') as file:
         file.write(log_string)
