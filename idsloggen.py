@@ -35,6 +35,7 @@ def send_dns_traffic(log_string):
         #print("domain: ", line_parts[3])
         #print("resolved ip: ", line_parts[4])
         #print("status code: ", line_parts[5])
+        #print("type of attack: ", line_parts[6])
         
         src_country = random.choice(country_list)
         index = 0
@@ -45,7 +46,7 @@ def send_dns_traffic(log_string):
 
         event = {
                 "timestamp": line_parts[0],
-                #"event_type": ,
+                "event_type": "alert",
                 "src_ip": line_parts[1],
                 "src_port": 53,
                 "dest_ip": line_parts[4],
@@ -61,15 +62,27 @@ def send_dns_traffic(log_string):
                     "gid": 1,
                     "signature_id": random.randint(10000, 99999),
                     "rev": 1,
-                    #"signature": ,
-                    #"category": ,
-                    #"severity": ,
+                    "signature": line_parts[6],
+                    "category": "DNS Attack",
+                    "severity": random.randint(1,2)
                 },
-                "payload_printable": f"Fake Payload: _ from {line_parts[1]}",
+                "payload_printable": f"Fake Payload: {line_parts[6]} from {line_parts[1]}",
                 "stream": 0,
                 "packet": line_parts[2],
-                #"packet_info": 
+                "packet_info": { "linktype": 1 }
         }
+
+        try:
+
+            response = requests.post(VECTOR_URL, json=event)
+            if response.status_code == 200:
+                print(f"[{time.strftime('%H:%M:%S')}] Sent: {template['signature']} from {template['country']} ({src})")
+            else:
+                print(f"Vector Rejected: {response.status_code} - {response.text}")
+        
+        except Exception as e:
+            print(f"Error sending log: {e}")
+
         time.sleep(random.uniform(0.1, 1.0))
 
 def generate_ip():
@@ -279,26 +292,38 @@ def DNS_log(attacktype):
     if attacktype == 1:
 
         prompt = "Forget all previous conversations. You are a DNS log generator. Simulate DNS hijacking in exactly 20 DNS log lines using the following format: <client_ip> <query_type> <domain> <resolved_ip> <response_code>. The logs should show domain names resolving to suspicious or unexpected IPs, suggesting malicious redirection. Include only hijacked entries. Rules: Use the names of real websites in the log. Output only raw log lines, no commentary, headings, or code blocks. Do not output anything aside from the data in the log. Begin directly with the first log line. End after exactly 20 log lines."
+        
+        attack = "DNS_Hijacking"
 
     elif attacktype == 2:
 
         prompt = "Forget all previous conversations. You are a DNS log generator. Generate 20 raw DNS log lines that suggest DNS cache poisoning. Use the format: <client_ip> <query_type> <domain> <resolved_ip> <response_code>. The logs should include conflicting IPs for the same domain within a short time, unusually short TTL behavior (implied), or domains resolving to untrusted or unexpected IPs. Strict constraints: Use the names of real websites for realism. No explanation, no extra text. No code blocks. Only 20 properly formatted log lines. Do not label logs in any way."
 
+        attack = "DNS_Cache_Poisoning"
+
     elif attacktype == 3:
 
         prompt = "Forget all previous conversations. You are a DNS log generator. Create 20 DNS log entries that show signs of a DNS amplification DDoS attack using the following format: <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Simulate high-frequency queries from spoofed IPs, often using ANY or A record types to domains that would yield large responses. Use the names of real websites for realism. Format rules: No extra text or wrapping—just 20 raw logs in the exact structure shown. Begin with the first log line, stop after the 20th."
+
+        attack = "DDDOS"
 
     elif attacktype == 4:
 
         prompt = "Forget all previous conversations. You are a DNS log generator. Generate 20 DNS log lines that reflect DNS tunneling activity using the format: <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Include suspiciously long or encoded-looking subdomains, repetitive client queries, and suspicious target domains. Keep query types mostly as A. Use the names of real websites for realism and make the URLs look realistic. Strict rules: Output only the 20 raw lines. No explanations, formatting, or extra lines. Start immediately and stop at exactly 20."
 
+        attack = "DNS_Tunneling"
+
     elif attacktype == 5:
 
         prompt = "Forget all previous conversations. You are a DNS log generator. Produce 20 DNS log entries showing signs of a fast flux network using the format: <client_ip> <query_type> <domain> <resolved_ip> <response_code>. Simulate the same domain resolving to many different IPs within short time intervals. Include multiple domains doing this, use response codes like 200 or 404, and use the names of real websites for realism. Output rules: Only raw DNS log lines in the exact format. No commentary or formatting. Limit output to exactly 20 lines. Do not use example.com, example.net, or any url like that."
 
+        attack = "Fast_Flux"
+
     elif attacktype == 6:
 
         prompt = "No attack"
+
+        attack = "No_Attack"
 
     else:
 
@@ -343,7 +368,7 @@ def DNS_log(attacktype):
 
             timestamp = datetime.utcnow().isoformat() + "Z"
 
-            full_log = full_log + timestamp + " " + new_log + "\n"
+            full_log = full_log + timestamp + " " + new_log + " " + attack + "\n"
 
             line_count = line_count + 1
 
@@ -361,7 +386,7 @@ def DNS_log(attacktype):
 
                 timestamp = datetime.utcnow().isoformat() + "Z"
 
-                full_log = full_log + timestamp + " " + new_line + "\n"
+                full_log = full_log + timestamp + " " + new_line + " " +  attack + "\n"
 
                 line_count = line_count + 1
 
@@ -383,7 +408,7 @@ def DNS_log(attacktype):
 
                 timestamp = datetime.utcnow().isoformat() + "Z"
 
-                full_log = full_log + timestamp + " " + log_str + "\n"
+                full_log = full_log + timestamp + " " + log_str + " " + "No_Attack" + "\n"
                 
                 line_count = line_count + 1
 
