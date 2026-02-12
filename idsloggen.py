@@ -1,7 +1,11 @@
 import requests
 import re
 import random
+import time
+import json
 from datetime import datetime, timedelta
+
+VECTOR_URL = "http://vector:8687"
 
 domain_ip_map = {
         "google.com": "8.8.8.8",
@@ -17,6 +21,56 @@ domain_ip_map = {
         "nytimes.com": "151.101.1.164",
         "bbc.com": "151.101.64.81"
         }
+
+def send_dns_traffic(log_string):
+    proto_list = ["TCP", "UDP"]
+    country_list = ["China", "Netherlands", "United States", "Vietnam", "Russia"]
+    country_code_list = ["CN", "NL", "US", "VN", "RU"]
+    
+    for line in log_string.splitlines():
+        line_parts = line.split()
+        #print("timestamp: ", line_parts[0])
+        #print("source ip: ", line_parts[1])
+        #print("record type: ", line_parts[2])
+        #print("domain: ", line_parts[3])
+        #print("resolved ip: ", line_parts[4])
+        #print("status code: ", line_parts[5])
+        
+        src_country = random.choice(country_list)
+        index = 0
+        for country in country_list:
+            if country == src_country:
+                src_country_code = country_code_list[index]
+            index = index + 1
+
+        event = {
+                "timestamp": line_parts[0],
+                #"event_type": ,
+                "src_ip": line_parts[1],
+                "src_port": 53,
+                "dest_ip": line_parts[4],
+                "dest_port": 53,
+                "proto": random.choice(proto_list),
+
+                #Heat Map Fields
+                "src_country": src_country,
+                "src_country_code": src_country_code,
+
+                "alert": {
+                    "action": "allowed",
+                    "gid": 1,
+                    "signature_id": random.randint(10000, 99999),
+                    "rev": 1,
+                    #"signature": ,
+                    #"category": ,
+                    #"severity": ,
+                },
+                "payload_printable": f"Fake Payload: _ from {line_parts[1]}",
+                "stream": 0,
+                "packet": line_parts[2],
+                #"packet_info": 
+        }
+        time.sleep(random.uniform(0.1, 1.0))
 
 def generate_ip():
 
@@ -279,13 +333,6 @@ def DNS_log(attacktype):
         # If an attack other than DDOS is selected
         if line_count in attack_line_position and attacktype != 3:
 
-            # Increment the timestamp by 1 second
-            dt = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%SZ")
-
-            dt += timedelta(seconds=1)
-
-            timestamp_str = dt.strftime("%Y-%m-%dT%H:%M:%SZ")
-
             # Remove newlines and spaces at the front a back of the response
             new_log = attack_lines[0].lstrip('\n')
 
@@ -293,6 +340,8 @@ def DNS_log(attacktype):
 
             # Remove the added attack line
             attack_lines.pop(0)
+
+            timestamp = datetime.utcnow().isoformat() + "Z"
 
             full_log = full_log + timestamp + " " + new_log + "\n"
 
@@ -302,13 +351,6 @@ def DNS_log(attacktype):
         elif attacktype == 3 and line_count == DDOS_start:
             
             for line in attack_lines:
-                
-                # Increment the timestamp by 1 second
-                dt = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%SZ")
-                
-                dt += timedelta(seconds=1)
-                
-                timestamp = dt.strftime("%Y-%m-%dT%H:%M:%SZ")
 
                 # Process the line
                 new_line = line.lstrip('\n')
@@ -316,6 +358,8 @@ def DNS_log(attacktype):
                 new_line = new_line.lstrip(' ')
 
                 new_line = process_line(new_line)
+
+                timestamp = datetime.utcnow().isoformat() + "Z"
 
                 full_log = full_log + timestamp + " " + new_line + "\n"
 
@@ -329,13 +373,6 @@ def DNS_log(attacktype):
             full_matches = [m.group(0) for m in pattern.finditer(reply)]
 
             try:
-
-                # Increment timestamp by 1 second
-                dt = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%SZ")
-
-                dt += timedelta(seconds=1)
-
-                timestamp = dt.strftime("%Y-%m-%dT%H:%M:%SZ")
             
                 # Take and process the first full match from the response
                 log_str = full_matches[0].lstrip(' ')
@@ -344,20 +381,21 @@ def DNS_log(attacktype):
 
                 log_str = process_line(log_str)
 
+                timestamp = datetime.utcnow().isoformat() + "Z"
+
                 full_log = full_log + timestamp + " " + log_str + "\n"
                 
                 line_count = line_count + 1
 
-            except:
-                # Decrement timestamp by 1 second if no valid log line is generated
-                dt -= timedelta(seconds=1)
+            except Exception as e:
+                pass
 
-    print(full_log)
+    send_dns_traffic(full_log)
 
 if __name__ == "__main__":
     loops = 4
 
-    for loop in range(loops):
+    while 1 == 1:
         # Gets log type
         logtype = random.randint(1,2)
 
