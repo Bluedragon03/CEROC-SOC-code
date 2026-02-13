@@ -64,7 +64,7 @@ def send_dns_traffic(log_string):
                     "rev": 1,
                     "signature": line_parts[6],
                     "category": "DNS Attack",
-                    "severity": random.randint(1,2)
+                    "severity": random.randint(1,3)
                 },
                 "payload_printable": f"Fake Payload: {line_parts[6]} from {line_parts[1]}",
                 "stream": 0,
